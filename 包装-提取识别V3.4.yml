@@ -1,0 +1,2400 @@
+app:
+  description: 材料核验后按类型提取制图区尺寸：瓦楞使用结构 Spec 词典，其他材料保留模型暂定名称；尺寸值与位置均由 OCR 行确定。
+  icon: 📦
+  icon_background: '#E8F2FF'
+  icon_type: emoji
+  mode: workflow
+  name: 包装-提取识别V3.4
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/tongyi:0.2.27@d9409c7d4e1ab9358330ee1c9897c29060f739657ec11e4aaab92f4265b376b6
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/paddleocr:0.3.2@2fb16776a6fbde0dbeed9d9a0a721b5c41b62e0e773dbdda2f3d370351759a52
+    version: null
+kind: app
+version: 0.7.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .WEBP
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: true
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 20
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 1
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: start
+        targetType: tool
+      id: 1788932193539-source-1788935044470
+      source: '1788932193539'
+      sourceHandle: source
+      target: '1788935044470'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: code
+      id: 1788932504587-source-1788935400000
+      source: '1788932504587'
+      sourceHandle: source
+      target: '1788935400000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: tool
+        targetType: code
+      id: 1788935044470-source-1788935200000
+      source: '1788935044470'
+      sourceHandle: source
+      target: '1788935200000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: code
+        targetType: code
+      id: 1788935200000-source-1791531000001
+      source: '1788935200000'
+      sourceHandle: source
+      target: '1791531000001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: code
+        targetType: if-else
+      id: 1788935250000-source-1788935450000
+      source: '1788935250000'
+      sourceHandle: source
+      target: '1788935450000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1788935270000-source-1788935490000
+      source: '1788935270000'
+      sourceHandle: source
+      target: '1788935490000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: code
+      id: 1788935300000-source-1788935350000
+      source: '1788935300000'
+      sourceHandle: source
+      target: '1788935350000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: code
+        targetType: llm
+      id: 1788935350000-source-1788932504587
+      source: '1788935350000'
+      sourceHandle: source
+      target: '1788932504587'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: code
+        targetType: code
+      id: 1788935350000-source-1788935250000
+      source: '1788935350000'
+      sourceHandle: source
+      target: '1788935250000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: code
+        targetType: end
+      id: 1788935400000-source-1788933100000
+      source: '1788935400000'
+      sourceHandle: source
+      target: '1788933100000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: if-else
+        targetType: llm
+      id: 1788935450000-false-1788935470000
+      source: '1788935450000'
+      sourceHandle: 'false'
+      target: '1788935470000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: if-else
+        targetType: llm
+      id: 1788935450000-true-1788935270000
+      selected: false
+      source: '1788935450000'
+      sourceHandle: 'true'
+      target: '1788935270000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1788935470000-source-1788935490000
+      source: '1788935470000'
+      sourceHandle: source
+      target: '1788935490000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: variable-aggregator
+        targetType: code
+      id: 1788935490000-source-1788935400000
+      source: '1788935490000'
+      sourceHandle: source
+      target: '1788935400000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        iteration_id: null
+        loop_id: null
+        sourceType: code
+        targetType: llm
+      id: 1791531000001-source-1788935300000
+      source: '1791531000001'
+      sourceHandle: source
+      target: '1788935300000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 上传包装图纸
+        type: start
+        variables:
+        - allowed_file_extensions:
+          - .JPG
+          - .JPEG
+          - .PNG
+          - .WEBP
+          - .PDF
+          allowed_file_types:
+          - image
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 包装图纸
+          max_length: 1
+          options: []
+          required: true
+          type: file
+          variable: drawing
+        - label: 源文件名（用于图纸命名 Spec）
+          max_length: 512
+          options: []
+          required: false
+          type: text-input
+          variable: source_file_name
+      height: 135
+      id: '1788932193539'
+      position:
+        x: 0
+        y: 34.83333333333334
+      positionAbsolute:
+        x: 0
+        y: 34.83333333333334
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 只填写模板字段，并关联 OCR 行；不得改动字段定义
+        model:
+          completion_params:
+            enable_thinking: false
+            max_tokens: 5000
+            response_format: json_object
+            temperature: 0.05
+          mode: chat
+          name: qwen3.8-flash
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: 9bd3e7f1-ceb6-4b19-89c3-6b3c3c13c561
+          role: system
+          text: '【职责】
+
+            你是 OCR 文本到 Spec 的严格映射器，只处理输入清单中的 id。
+
+
+            【提取规则】
+
+            1. 只输出有直接 OCR 证据的字段，每项至少引用一个真实行号；没有证据则省略。
+
+            2. id 不得改名、重复或新增。保留原值、符号和单位。
+
+            3. 字段语义以 name 和 extractionHint 为准。不能把材料类别当作产品类型，不能把不同标识混为一项。
+
+            4. 清单给出 allowedValues 时，value 只能取其中一项；无法确定则省略。
+
+
+            【输出格式】
+
+            只输出一个 JSON 对象，唯一顶层键为 fields。
+
+            fields 必须是 JSON 数组，不得是以 id 为键的对象；无结果时输出 {"fields":[]}。
+
+            数组每项包含 id、value、lineIndexes，可选 unit。
+
+
+            【禁止】
+
+            不得输出 bbox、文件名字段、图形字段、派生字段、解释或 Markdown。'
+        - id: 0816b692-af80-4b8d-9333-76e24defc75e
+          role: user
+          text: '【字段清单】
+
+            {{#1788935350000.llm_template#}}
+
+
+            【OCR 行】
+
+            {{#1788935200000.llm_ocr_lines#}}'
+        selected: false
+        title: 信息类 SPEC 填写
+        type: llm
+        vision:
+          enabled: false
+      height: 132
+      id: '1788932504587'
+      position:
+        x: 2776
+        y: 0
+      positionAbsolute:
+        x: 2776
+        y: 0
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        desc: 返回识别结果页使用的完整提取 JSON
+        outputs:
+        - value_selector:
+          - '1788935400000'
+          - result
+          variable: result
+        selected: false
+        title: 输出结果
+        type: end
+      height: 116
+      id: '1788933100000'
+      position:
+        x: 3842
+        y: 251.83333333333337
+      positionAbsolute:
+        x: 3842
+        y: 251.83333333333337
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        is_team_authorization: false
+        paramSchemas:
+        - auto_generate: null
+          default: PP-OCRv6
+          form: form
+          human_description:
+            en_US: The OCR model to use for text recognition.
+            ja_JP: The OCR model to use for text recognition.
+            pt_BR: The OCR model to use for text recognition.
+            zh_Hans: 用于文字识别的 OCR 模型。
+          label:
+            en_US: Model
+            ja_JP: Model
+            pt_BR: Model
+            zh_Hans: 模型
+          llm_description: The OCR model to use for text recognition.
+          max: null
+          min: null
+          name: model
+          options:
+          - icon: ''
+            label:
+              en_US: PP-OCRv5
+              ja_JP: PP-OCRv5
+              pt_BR: PP-OCRv5
+              zh_Hans: PP-OCRv5
+            value: PP-OCRv5
+          - icon: ''
+            label:
+              en_US: PP-OCRv5-latin
+              ja_JP: PP-OCRv5-latin
+              pt_BR: PP-OCRv5-latin
+              zh_Hans: PP-OCRv5-latin
+            value: PP-OCRv5-latin
+          - icon: ''
+            label:
+              en_US: PP-OCRv6
+              ja_JP: PP-OCRv6
+              pt_BR: PP-OCRv6
+              zh_Hans: PP-OCRv6
+            value: PP-OCRv6
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Dify uploaded image/PDF file. For compatibility, URL or base64
+              string values are still accepted by the runtime.
+            ja_JP: Dify uploaded image/PDF file. For compatibility, URL or base64
+              string values are still accepted by the runtime.
+            pt_BR: Dify uploaded image/PDF file. For compatibility, URL or base64
+              string values are still accepted by the runtime.
+            zh_Hans: Dify 上传的图像或 PDF 文件。为兼容旧工作流，运行时仍接受 URL 或 Base64 字符串。
+          label:
+            en_US: File
+            ja_JP: File
+            pt_BR: File
+            zh_Hans: 文件
+          llm_description: Dify uploaded image/PDF file. For compatibility, URL or
+            base64 string values are still accepted by the runtime.
+          max: null
+          min: null
+          name: file
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: auto
+          form: llm
+          human_description:
+            en_US: File type. "Auto Detect" will infer the type from the uploaded
+              file metadata when available. "PDF" is for PDF files, and "Image" is
+              for image files.
+            ja_JP: File type. "Auto Detect" will infer the type from the uploaded
+              file metadata when available. "PDF" is for PDF files, and "Image" is
+              for image files.
+            pt_BR: File type. "Auto Detect" will infer the type from the uploaded
+              file metadata when available. "PDF" is for PDF files, and "Image" is
+              for image files.
+            zh_Hans: 文件类型。“自动检测”会在可用时根据上传文件元数据推断类型，“PDF”表示 PDF 文件，“图片”表示图像文件。
+          label:
+            en_US: File Type
+            ja_JP: File Type
+            pt_BR: File Type
+            zh_Hans: 文件类型
+          llm_description: File type. "auto" will infer the type from uploaded file
+            metadata when available, "pdf" is for PDF files, and "image" is for image
+            files.
+          max: null
+          min: null
+          name: fileType
+          options:
+          - icon: ''
+            label:
+              en_US: Auto Detect
+              ja_JP: Auto Detect
+              pt_BR: Auto Detect
+              zh_Hans: 自动检测
+            value: auto
+          - icon: ''
+            label:
+              en_US: PDF
+              ja_JP: PDF
+              pt_BR: PDF
+              zh_Hans: PDF
+            value: pdf
+          - icon: ''
+            label:
+              en_US: Image
+              ja_JP: Image
+              pt_BR: Image
+              zh_Hans: 图片
+            value: image
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional PDF pages to process, using expressions such as "2,4-6".
+              Leave empty to process every page.
+            ja_JP: Optional PDF pages to process, using expressions such as "2,4-6".
+              Leave empty to process every page.
+            pt_BR: Optional PDF pages to process, using expressions such as "2,4-6".
+              Leave empty to process every page.
+            zh_Hans: 可选的 PDF 处理页码范围，例如“2,4-6”。留空则处理全部页面。
+          label:
+            en_US: PDF Page Ranges
+            ja_JP: PDF Page Ranges
+            pt_BR: PDF Page Ranges
+            zh_Hans: PDF 页码范围
+          llm_description: Optional PDF pages to process, using expressions such as
+            "2,4-6". Leave empty to process every page.
+          max: null
+          min: null
+          name: pageRanges
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: false
+          form: llm
+          human_description:
+            en_US: Whether to enable the document orientation classification function.
+              Enabling this feature allows the input image to be automatically rotated
+              to the correct orientation.
+            ja_JP: Whether to enable the document orientation classification function.
+              Enabling this feature allows the input image to be automatically rotated
+              to the correct orientation.
+            pt_BR: Whether to enable the document orientation classification function.
+              Enabling this feature allows the input image to be automatically rotated
+              to the correct orientation.
+            zh_Hans: 是否启用文档方向分类功能。启用该功能可以将输入图像自动转正。
+          label:
+            en_US: Whether to Enable Document Orientation Classification
+            ja_JP: Whether to Enable Document Orientation Classification
+            pt_BR: Whether to Enable Document Orientation Classification
+            zh_Hans: 是否启用文档方向分类
+          llm_description: Whether to enable the document orientation classification
+            function. Enabling this feature allows the input image to be automatically
+            rotated to the correct orientation. Keep this feature disabled unless
+            the user ask for it.
+          max: null
+          min: null
+          name: useDocOrientationClassify
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        - auto_generate: null
+          default: false
+          form: llm
+          human_description:
+            en_US: Whether to enable the text image unwarping function. Enabling this
+              feature allows automatic correction of distorted text images.
+            ja_JP: Whether to enable the text image unwarping function. Enabling this
+              feature allows automatic correction of distorted text images.
+            pt_BR: Whether to enable the text image unwarping function. Enabling this
+              feature allows automatic correction of distorted text images.
+            zh_Hans: 是否启用文本图像矫正功能。启用该功能可以对发生畸变的文本图像进行自动矫正。
+          label:
+            en_US: Whether to Enable Text Image Unwarping
+            ja_JP: Whether to Enable Text Image Unwarping
+            pt_BR: Whether to Enable Text Image Unwarping
+            zh_Hans: 是否启用文本图像矫正
+          llm_description: Whether to enable the text image unwarping function. Enabling
+            this feature allows automatic correction of distorted text images. Keep
+            this feature disabled unless the user ask for it.
+          max: null
+          min: null
+          name: useDocUnwarping
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        - auto_generate: null
+          default: true
+          form: llm
+          human_description:
+            en_US: Whether to enable the text line orientation classification function.
+              Enabling this feature allows automatic orientation correction for each
+              recognized text line.
+            ja_JP: Whether to enable the text line orientation classification function.
+              Enabling this feature allows automatic orientation correction for each
+              recognized text line.
+            pt_BR: Whether to enable the text line orientation classification function.
+              Enabling this feature allows automatic orientation correction for each
+              recognized text line.
+            zh_Hans: 是否启用文本行方向分类功能。启用该功能可以自动对识别到的每个文本行进行方向转正。
+          label:
+            en_US: Whether to Enable Text Line Orientation Classification
+            ja_JP: Whether to Enable Text Line Orientation Classification
+            pt_BR: Whether to Enable Text Line Orientation Classification
+            zh_Hans: 是否启用文本行方向分类
+          llm_description: Whether to enable the text line orientation classification
+            function. Enabling this feature allows automatic orientation correction
+            for each recognized text line.
+          max: null
+          min: null
+          name: useTextlineOrientation
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        - auto_generate: null
+          default: 64
+          form: llm
+          human_description:
+            en_US: Image side length limit for text detection.
+            ja_JP: Image side length limit for text detection.
+            pt_BR: Image side length limit for text detection.
+            zh_Hans: 文本检测的图像边长限制。
+          label:
+            en_US: Image Side Length Limit for Text Detection
+            ja_JP: Image Side Length Limit for Text Detection
+            pt_BR: Image Side Length Limit for Text Detection
+            zh_Hans: 文本检测的图像边长限制
+          llm_description: Image side length limit for text detection.
+          max: null
+          min: null
+          name: textDetLimitSideLen
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: min
+          form: llm
+          human_description:
+            en_US: Type of side length limit for text detection. Supports "min" or
+              "max", indicating that the shortest side of the image will be no less
+              than `textDetLimitSideLen`, or the longest side will be no greater than
+              `textDetLimitSideLen`, respectively.
+            ja_JP: Type of side length limit for text detection. Supports "min" or
+              "max", indicating that the shortest side of the image will be no less
+              than `textDetLimitSideLen`, or the longest side will be no greater than
+              `textDetLimitSideLen`, respectively.
+            pt_BR: Type of side length limit for text detection. Supports "min" or
+              "max", indicating that the shortest side of the image will be no less
+              than `textDetLimitSideLen`, or the longest side will be no greater than
+              `textDetLimitSideLen`, respectively.
+            zh_Hans: 文本检测的边长度限制类型。支持为"min"或者"max"，分别表示保证图像最短边不小于`textDetLimitSideLen`和保证图像最长边不大于`textDetLimitSideLen`。
+          label:
+            en_US: Type of Side Length Limit for Text Detection
+            ja_JP: Type of Side Length Limit for Text Detection
+            pt_BR: Type of Side Length Limit for Text Detection
+            zh_Hans: 文本检测的边长度限制类型
+          llm_description: Type of side length limit for text detection. Supports
+            "min" or "max", indicating that the shortest side of the image will be
+            no less than `textDetLimitSideLen`, or the longest side will be no greater
+            than `textDetLimitSideLen`, respectively.
+          max: null
+          min: null
+          name: textDetLimitType
+          options:
+          - icon: ''
+            label:
+              en_US: min
+              ja_JP: min
+              pt_BR: min
+              zh_Hans: min
+            value: min
+          - icon: ''
+            label:
+              en_US: max
+              ja_JP: max
+              pt_BR: max
+              zh_Hans: max
+            value: max
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: 0.3
+          form: llm
+          human_description:
+            en_US: Pixel threshold for text detection. In the output probability map,
+              only pixels with scores higher than this threshold are considered text
+              pixels.
+            ja_JP: Pixel threshold for text detection. In the output probability map,
+              only pixels with scores higher than this threshold are considered text
+              pixels.
+            pt_BR: Pixel threshold for text detection. In the output probability map,
+              only pixels with scores higher than this threshold are considered text
+              pixels.
+            zh_Hans: 文本检测像素阈值。输出的概率图中，得分大于该阈值的像素点才会被认为是文字像素点。
+          label:
+            en_US: Text Detection Pixel Threshold
+            ja_JP: Text Detection Pixel Threshold
+            pt_BR: Text Detection Pixel Threshold
+            zh_Hans: 文本检测像素阈值
+          llm_description: Pixel threshold for text detection. In the output probability
+            map, only pixels with scores higher than this threshold are considered
+            text pixels.
+          max: null
+          min: null
+          name: textDetThresh
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: 0.6
+          form: llm
+          human_description:
+            en_US: Bounding box threshold for text detection. A detected box is considered
+              a text region if the average score of all pixels within the box exceeds
+              this threshold.
+            ja_JP: Bounding box threshold for text detection. A detected box is considered
+              a text region if the average score of all pixels within the box exceeds
+              this threshold.
+            pt_BR: Bounding box threshold for text detection. A detected box is considered
+              a text region if the average score of all pixels within the box exceeds
+              this threshold.
+            zh_Hans: 文本检测框阈值。检测结果边框内，所有像素点的平均得分大于该阈值时，该结果会被认为是文字区域。
+          label:
+            en_US: Text Detection Box Threshold
+            ja_JP: Text Detection Box Threshold
+            pt_BR: Text Detection Box Threshold
+            zh_Hans: 文本检测框阈值
+          llm_description: Bounding box threshold for text detection. A detected box
+            is considered a text region if the average score of all pixels within
+            the box exceeds this threshold.
+          max: null
+          min: null
+          name: textDetBoxThresh
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: 1.5
+          form: llm
+          human_description:
+            en_US: Unclipping ratio for text detection. When unclipping text regions,
+              a larger value results in a greater unclipping area.
+            ja_JP: Unclipping ratio for text detection. When unclipping text regions,
+              a larger value results in a greater unclipping area.
+            pt_BR: Unclipping ratio for text detection. When unclipping text regions,
+              a larger value results in a greater unclipping area.
+            zh_Hans: 文本检测扩张系数。对文字区域进行扩张时，该值越大，扩张的面积越大。
+          label:
+            en_US: Text Detection Unclipping Ratio
+            ja_JP: Text Detection Unclipping Ratio
+            pt_BR: Text Detection Unclipping Ratio
+            zh_Hans: 文本检测扩张系数
+          llm_description: Unclipping ratio for text detection. When unclipping text
+            regions, a larger value results in a greater unclipping area.
+          max: null
+          min: null
+          name: textDetUnclipRatio
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: 0
+          form: llm
+          human_description:
+            en_US: Threshold for text recognition. Text results with scores higher
+              than this threshold will be retained.
+            ja_JP: Threshold for text recognition. Text results with scores higher
+              than this threshold will be retained.
+            pt_BR: Threshold for text recognition. Text results with scores higher
+              than this threshold will be retained.
+            zh_Hans: 文本识别阈值。得分大于该阈值的文本结果会被保留。
+          label:
+            en_US: Text Recognition Threshold
+            ja_JP: Text Recognition Threshold
+            pt_BR: Text Recognition Threshold
+            zh_Hans: 文本识别阈值
+          llm_description: Threshold for text recognition. Text results with scores
+            higher than this threshold will be retained.
+          max: null
+          min: null
+          name: textRecScoreThresh
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: false
+          form: llm
+          human_description:
+            en_US: Whether or not to return word boxes.
+            ja_JP: Whether or not to return word boxes.
+            pt_BR: Whether or not to return word boxes.
+            zh_Hans: 是否返回文字框。
+          label:
+            en_US: Whether to Return Word Boxes
+            ja_JP: Whether to Return Word Boxes
+            pt_BR: Whether to Return Word Boxes
+            zh_Hans: 是否返回文字框
+          llm_description: Whether or not to return word boxes.
+          max: null
+          min: null
+          name: returnWordBox
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        - auto_generate: null
+          default: false
+          form: llm
+          human_description:
+            en_US: Whether or not to return visualization results.
+            ja_JP: Whether or not to return visualization results.
+            pt_BR: Whether or not to return visualization results.
+            zh_Hans: 是否返回可视化结果。
+          label:
+            en_US: Whether to Return Visualization Results
+            ja_JP: Whether to Return Visualization Results
+            pt_BR: Whether to Return Visualization Results
+            zh_Hans: 是否返回可视化结果
+          llm_description: Whether or not to return visualization results.
+          max: null
+          min: null
+          name: visualize
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional JSON object merged into the official API optional payload.
+              Values here override named options. Transport-level fields such as file,
+              model, and pageRanges are not allowed.
+            ja_JP: Optional JSON object merged into the official API optional payload.
+              Values here override named options. Transport-level fields such as file,
+              model, and pageRanges are not allowed.
+            pt_BR: Optional JSON object merged into the official API optional payload.
+              Values here override named options. Transport-level fields such as file,
+              model, and pageRanges are not allowed.
+            zh_Hans: 可选 JSON 对象，将合并到官方 API 的 optional payload 中。同名值会覆盖具名参数，且不允许包含
+              file、model、pageRanges 等传输层字段。
+          label:
+            en_US: Advanced API Options (JSON)
+            ja_JP: Advanced API Options (JSON)
+            pt_BR: Advanced API Options (JSON)
+            zh_Hans: 高级 API 参数（JSON）
+          llm_description: Optional JSON object of advanced PaddleOCR API options.
+            Values override named options. Do not include file, model, pageRanges,
+            or other transport-level fields.
+          max: null
+          min: null
+          name: extraOptions
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          extraOptions: ''
+          file: ''
+          fileType: ''
+          model: ''
+          pageRanges: ''
+          returnWordBox: ''
+          textDetBoxThresh: ''
+          textDetLimitSideLen: ''
+          textDetLimitType: ''
+          textDetThresh: ''
+          textDetUnclipRatio: ''
+          textRecScoreThresh: ''
+          useDocOrientationClassify: ''
+          useDocUnwarping: ''
+          useTextlineOrientation: ''
+          visualize: ''
+        plugin_id: langgenius/paddleocr
+        plugin_unique_identifier: langgenius/paddleocr:0.3.1@1023823abd8562b89fcb466ec372e90a67601b3883b94dd07377dea6547ff626
+        provider_icon: http://192.168.1.32/console/api/workspaces/current/plugin/icon?tenant_id=eaffb83a-7ec1-4daa-b702-cca3c53b338c&filename=f6742a8ecae19d42dedb6641125203e86a70016f465191b85a3bbe1588234c80.png
+        provider_id: langgenius/paddleocr/paddleocr
+        provider_name: langgenius/paddleocr/paddleocr
+        provider_type: builtin
+        selected: false
+        title: PaddleOCR 识别图纸
+        tool_configurations:
+          model:
+            type: constant
+            value: PP-OCRv6
+        tool_description: PaddleOCR 文字识别工具，提供多场景、多文字类型的文字识别能力
+        tool_label: 文字识别
+        tool_name: text_recognition
+        tool_node_version: '2'
+        tool_parameters:
+          extraOptions:
+            type: mixed
+            value: null
+          file:
+            type: variable
+            value:
+            - '1788932193539'
+            - drawing
+          fileType:
+            type: constant
+            value: auto
+          pageRanges:
+            type: mixed
+            value: null
+          returnWordBox:
+            type: constant
+            value: true
+          textDetBoxThresh:
+            type: constant
+            value: 0.6
+          textDetLimitSideLen:
+            type: constant
+            value: 4096
+          textDetLimitType:
+            type: constant
+            value: max
+          textDetThresh:
+            type: constant
+            value: 0.3
+          textDetUnclipRatio:
+            type: constant
+            value: 1.5
+          textRecScoreThresh:
+            type: constant
+            value: 0
+          useDocOrientationClassify:
+            type: constant
+            value: false
+          useDocUnwarping:
+            type: constant
+            value: false
+          useTextlineOrientation:
+            type: constant
+            value: true
+          visualize:
+            type: constant
+            value: false
+        type: tool
+      height: 88
+      id: '1788935044470'
+      position:
+        x: 342
+        y: 80.83333333333334
+      positionAbsolute:
+        x: 342
+        y: 80.83333333333334
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        code: "import json\n\ndef main(ocr_json) -> dict:\n    data = ocr_json[0]\
+          \ if isinstance(ocr_json, list) and ocr_json else ocr_json\n    pages =\
+          \ (data or {}).get('pages', [])\n    result = pages[0].get('pruned_result',\
+          \ {}) if pages else {}\n    texts = result.get('rec_texts', [])\n    scores\
+          \ = result.get('rec_scores', [])\n    boxes = result.get('rec_boxes', [])\n\
+          \    rows, llm_rows, source_texts = [], [], []\n    for i, value in enumerate(texts):\n\
+          \        text = str(value).strip()\n        if not text:\n            continue\n\
+          \        score = round(float(scores[i]), 4) if i < len(scores) else 0\n\
+          \        box = boxes[i] if i < len(boxes) else None\n        rows.append({'i':\
+          \ i, 'text': text, 'score': score, 'box': box})\n        llm_rows.append({'i':\
+          \ i, 't': text, 'b': box})\n        if score >= 0.45:\n            source_texts.append(text)\n\
+          \n    full = ' | '.join(source_texts)\n    upper = full.upper()\n    features\
+          \ = []\n    feature_rules = [\n        (['CORRUGATED', '瓦楞'], '瓦楞纸板 corrugated\
+          \ fiberboard'),\n        (['E FLUTE', 'E楞'], 'E楞 E flute 单瓦楞'),\n      \
+          \  (['B FLUTE', 'B楞'], 'B楞 B flute'),\n        (['KRAFT', '牛皮纸'], '牛皮纸 kraft\
+          \ paper'),\n        (['BURSTING', '耐破'], '耐破强度 bursting strength'),\n  \
+          \      (['COMPRESSION', '抗压'], '抗压强度 compression strength'),\n        (['INNER',\
+          \ 'OUTER', '内尺寸', '外尺寸'], '纸盒内外尺寸 公差'),\n        (['FSC', 'RECYCLE', '回收'],\
+          \ 'FSC 回收标志 包装与环境标识'),\n        (['HANDLE', 'FRAGILE', 'KEEP DRY', '储运'],\
+          \ '运输包装收发货及储运图示标志'),\n        (['ACCESSORY BOX', 'CARTON', '纸盒', '纸箱'],\
+          \ '附件盒 折叠纸盒 运输包装适用条件'),\n        (['FOLD', 'DIE CUT', '模切', '压痕'], '模切折叠盒\
+          \ 结构型式'),\n        (['LENOVO', 'LCFC'], '联想企业通用包装标准')\n    ]\n    for keys,\
+          \ label in feature_rules:\n        if any(key.upper() in upper for key in\
+          \ keys):\n            features.append(label)\n    query = '；'.join(features)\
+          \ or '包装图纸适用的材料、性能、运输、标识和结构标准'\n    query += '。分别返回适用范围、触发特征、排除条件、标准ID和卡片信息。'\n\
+          \    return {\n        'ocr_lines': json.dumps(rows, ensure_ascii=False,\
+          \ separators=(',', ':')),\n        'llm_ocr_lines': json.dumps(llm_rows,\
+          \ ensure_ascii=False, separators=(',', ':')),\n        'retrieval_query':\
+          \ query[:1200]\n    }\n"
+        code_language: python3
+        desc: 保留 OCR 文字和坐标，并生成知识库检索文本
+        outputs:
+          llm_ocr_lines:
+            children: null
+            type: string
+          ocr_lines:
+            children: null
+            type: string
+          retrieval_query:
+            children: null
+            type: string
+        selected: false
+        title: OCR 结果结构化处理
+        type: code
+        variables:
+        - value_selector:
+          - '1788935044470'
+          - json
+          value_type: array[object]
+          variable: ocr_json
+      height: 96
+      id: '1788935200000'
+      position:
+        x: 684
+        y: 91.50000000000001
+      positionAbsolute:
+        x: 684
+        y: 91.50000000000001
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        code: "import json\nimport re\n\n# 不按某张图纸的固定坐标裁切。位置判断交给视觉模型，代码只排除明显的长文本和编号。\n\
+          SHORT_NUMBER = re.compile(r'^\\s*[+\\-–—]*\\s*(?:[RrØΦφ]\\s*)?\\d+(?:\\\
+          .\\d+)?'r'(?:\\s*[xX×*]\\s*\\d+(?:\\.\\d+)?){0,2}'r'(?:\\s*(?:±\\s*\\d+(?:\\\
+          .\\d+)?|\\+\\s*\\d+(?:\\.\\d+)?\\s*/\\s*-\\s*\\d+(?:\\.\\d+)?))?'r'(?:\\\
+          s*(?:mm|cm|°))?\\s*[\\-–—]*\\s*$', re.I)\n\ndef load(value):\n    if isinstance(value,\
+          \ list):\n        return value\n    if isinstance(value, dict):\n      \
+          \  return value.get('rows', value.get('items', []))\n    try:\n        parsed\
+          \ = json.loads(str(value or ''))\n        return parsed if isinstance(parsed,\
+          \ list) else parsed.get('rows', parsed.get('items', []))\n    except Exception:\n\
+          \        return []\n\ndef main(ocr_lines: str) -> dict:\n    candidates\
+          \ = []\n    for row in load(ocr_lines):\n        if not isinstance(row,\
+          \ dict):\n            continue\n        text = re.sub(r'\\s+', ' ', str(row.get('text',\
+          \ '')).strip())\n        box = row.get('box')\n        if not SHORT_NUMBER.fullmatch(text)\
+          \ or not isinstance(box, list) or len(box) != 4:\n            continue\n\
+          \        candidates.append({'i': row.get('i'), 'text': text, 'box': box,\n\
+          \                           'score': round(float(row.get('score') or 0),\
+          \ 4)})\n    candidates.sort(key=lambda item: (float(item['box'][1]), float(item['box'][0])))\n\
+          \    return {'dimension_candidates': json.dumps(candidates, ensure_ascii=False,\
+          \ separators=(',', ':'))}\n"
+        code_language: python3
+        desc: 只收集短数字标注及其 OCR 坐标；是否属于尺寸由视觉模型判断。
+        outputs:
+          dimension_candidates:
+            children: null
+            type: string
+        selected: false
+        title: 结构 SPEC 识别准备
+        type: code
+        variables:
+        - value_selector:
+          - '1788935200000'
+          - ocr_lines
+          value_type: string
+          variable: ocr_lines
+      height: 96
+      id: '1788935250000'
+      position:
+        x: 2072
+        y: 277.70000000000005
+      positionAbsolute:
+        x: 2072
+        y: 277.70000000000005
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 逐个核对尺寸线和 OCR 行；从代码提供的类别词典选择 specId，不能自创标准 ID。
+        model:
+          completion_params:
+            enable_thinking: false
+            max_tokens: 4200
+            response_format: json_object
+            temperature: 0.05
+          mode: chat
+          name: qwen3.8-flash
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: 66c29ce1-7327-412a-abdc-9358a1bf5133
+          role: system
+          text: '【职责与输入分工】
+
+            你只负责瓦楞图纸制图区的尺寸与视觉字段。
+
+            - 原图决定结构和尺寸线。
+
+            - OCR 候选提供行号与坐标。
+
+            - 结构 Spec 词典只提供允许使用的 specId。
+
+
+            【尺寸覆盖范围】
+
+            1. 逐个检查主制图区所有可读的真实尺寸数字，包括总尺寸、分段尺寸、孔槽与标识定位尺寸。同值重复出现也逐项输出。
+
+            2. 排除图框坐标号、表格值、日期、图号、条码、认证号、材料代码及没有尺寸线的孤立数字。
+
+            3. 每个数字只关联一条真实 OCR lineIndex；同一 lineIndex 不得重复。
+
+            4. value 和 bbox 均由代码从 OCR 读取；不得输出或猜测 value、bbox。
+
+
+            【drawingDimensions 字段】
+
+            每项只能包含 key、specId、name、faceName、dimensionRole、unit、lineIndexes、confidence。
+
+            - key：dim_ 加真实行号。
+
+            - specId：只可逐字选自输入词典。只有结构连接、测量边界和方向都证明该名称时才填写；否则填 null。
+
+            - name：选中 specId 时填词典原名，不得改写；未选中时用“位置＋部件＋测量方向／关系”给出暂定名，不得编造具体成品面名。
+
+            - faceName：不确定时填 null。
+
+            - dimensionRole：仅 overall、panel、score_to_score、placement、unknown。
+
+            - unit：仅 mm 或 null。
+
+            - confidence：0 到 1 的数字。
+
+            不得因为词典有某项就凭空生成该项；真实尺寸归属不明时仍须输出暂定名，不能丢到未映射。
+
+
+            【其他输出】
+
+            - unmatchedDimensionTexts：原图可见但 OCR 没有对应行的尺寸原文；绝不借用同值的其他位置。
+
+            - visualFields：只填写视觉字段清单中有直接证据的原样 id；每项包含 id、value、lineIndexes、confidence；allowedValues
+            必须原样选取。
+
+            - dimensions.flatSize：仅在两条总尺寸线确实跨越外轮廓时输出，lineIndexes 顺序为横向、纵向。
+
+
+            【输出格式】
+
+            只输出 JSON 对象，顶层仅 drawingDimensions、visualFields、unmatchedDimensionTexts。禁止解释、Markdown
+            和额外键。'
+        - id: 99dffe74-c13c-421c-9571-fc78d1401185
+          role: user
+          text: '【结构 Spec 词典】
+
+            {{#1788935350000.structure_spec_catalog#}}
+
+
+            【视觉字段清单】
+
+            {{#1788935350000.visual_template#}}
+
+
+            【尺寸 OCR 候选】
+
+            {{#1788935250000.dimension_candidates#}}
+
+
+            【OCR 行】
+
+            {{#1788935200000.llm_ocr_lines#}}'
+        selected: false
+        title: 瓦楞结构 SPEC 填写
+        type: llm
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1788932193539'
+            - drawing
+          enabled: true
+      height: 148
+      id: '1788935270000'
+      position:
+        x: 2776
+        y: 196.1
+      positionAbsolute:
+        x: 2776
+        y: 196.1
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 每张图纸都核对 MATERIAL 栏、OCR 其他证据及原图结构
+        model:
+          completion_params:
+            enable_thinking: false
+            max_tokens: 700
+            response_format: json_object
+            temperature: 0.05
+          mode: chat
+          name: qwen3.8-flash
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: 1f91f442-590b-40e8-9469-0ec6307853bc
+          role: system
+          text: '【职责】
+
+            你是包装图纸的主要材料与瓦楞二级结构核验器。先判断材料；仅当材料为瓦楞时，再判断二级结构。
+
+
+            【主要材料：证据与判定】
+
+            1. 以 MATERIAL 栏为主要证据，再独立核对原图及其他 OCR 行。recognizedAlias 只是文字匹配提示，不是结论。
+
+            2. materialType 只能是 corrugated、molded_pulp、tracing_paper、bamboo_fiber、unknown。
+
+            3. 材质栏与独立证据冲突时填 unknown；复合材质或无法确认主体材质时也填 unknown。
+
+            4. recycled corrugated pulp 是纸浆模原料，不等于瓦楞纸板。不得仅凭文件名、用途、颜色、FSC 或 KRAFT 判断材料。
+
+            5. materialRawText 抄录材质栏原文，缺失时填空字符串。
+
+            6. evidenceLineIndexes 仅引用材质栏的真实 OCR 行号；corroboratingLineIndexes 仅引用独立佐证的真实
+            OCR 行号。visualEvidence 只写原图确实可见的材料证据，无则填空字符串。
+
+            7. verificationStatus 只能是 consistent、insufficient、conflict；confidence
+            为 0 到 1 的数字。
+
+
+            【瓦楞二级结构：主证据】
+
+            structureCategory 只能是 flat_box、folding_box、corrugated_pad 或 null。必须根据原图可见的板片、模切线、折线和连接关系判断：
+
+            - flat_box：连续箱面、接合边与顶底摇盖。
+
+            - folding_box：一纸成型的盒底、围墙／侧墙与盒盖。
+
+            - corrugated_pad：有折叠段的垫件，不形成完整闭合盒体。
+
+
+            【瓦楞二级结构：边界与字段】
+
+            1. ACC BOX、CARTON、PAPER PAD、FOLD、GLUE、楞型和文件名只能作佐证，不能独立定类。
+
+            2. 预粘合盒、套盒、图形与文字冲突或无法证明连接关系时，structureCategory 填 null。不得猜测 FEFCO 型号。
+
+            3. structurePrimaryEvidence 用一句话描述实际看到的结构关系，不要重复文字名称。
+
+            4. structureCorroboratingLineIndexes 仅引用真实 OCR 行号，无则为空数组；structureConfidence
+            为 0 到 1 的数字。
+
+            5. 图形与文字明显冲突时，structureConflict=true。
+
+            6. 非瓦楞材料时固定输出：structureCategory=null、structureConfidence=0、structurePrimaryEvidence=""、structureCorroboratingLineIndexes=[]、structureConflict=false。
+
+
+            【输出格式】
+
+            只输出一个 JSON 对象，严格包含以下键：
+
+            - 材料：materialType、materialRawText、confidence、evidenceLineIndexes、corroboratingLineIndexes、visualEvidence、verificationStatus、reason。
+
+            - 二级结构：structureCategory、structureConfidence、structurePrimaryEvidence、structureCorroboratingLineIndexes、structureConflict。
+
+            禁止额外键、bbox 和 Markdown。'
+        - id: c2af2b84-ab1f-449f-a780-d79b22928ee5
+          role: user
+          text: '【材质栏候选】
+
+            {{#1791531000001.material_context#}}
+
+
+            【瓦楞二级类别与文字佐证】
+
+            {{#1791531000001.structure_context#}}
+
+
+            【OCR 行】
+
+            {{#1788935200000.ocr_lines#}}'
+        selected: false
+        title: 识别图纸材料类型
+        type: llm
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1788932193539'
+            - drawing
+          enabled: true
+      height: 132
+      id: '1788935300000'
+      position:
+        x: 1368
+        y: 105.50000000000001
+      positionAbsolute:
+        x: 1368
+        y: 105.50000000000001
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        code: "import json\nimport re\n\nSCHEMA_VERSION = '2.1'\nCOMMON_TEMPLATE =\
+          \ [{'category': 'material_properties', 'key': 'materialType', 'name': '材料类别',\
+          \ 'unit': None, 'id': 'material_properties.materialType', 'extractionMode':\
+          \ 'derived', 'valueType': 'string', 'allowedValues': ['corrugated', 'molded_pulp',\
+          \ 'tracing_paper', 'bamboo_fiber'], 'derivedFrom': ['materialProfile.materialType']},\
+          \ {'category': 'file_naming', 'key': 'fullName', 'name': '完整图纸文件名', 'unit':\
+          \ None, 'id': 'file_naming.fullName', 'extractionMode': 'file_metadata',\
+          \ 'valueType': 'string'}, {'category': 'file_naming', 'key': 'partNumber',\
+          \ 'name': '文件名物料号', 'unit': None, 'id': 'file_naming.partNumber', 'extractionMode':\
+          \ 'file_metadata', 'valueType': 'string'}, {'category': 'file_naming', 'key':\
+          \ 'materialDescription', 'name': '文件名物料描述', 'unit': None, 'id': 'file_naming.materialDescription',\
+          \ 'extractionMode': 'file_metadata', 'valueType': 'string'}, {'category':\
+          \ 'file_naming', 'key': 'revision', 'name': '文件名版本号', 'unit': None, 'id':\
+          \ 'file_naming.revision', 'extractionMode': 'file_metadata', 'valueType':\
+          \ 'string'}, {'category': 'file_naming', 'key': 'supplierCode', 'name':\
+          \ '文件名供应商缩写', 'unit': None, 'id': 'file_naming.supplierCode', 'extractionMode':\
+          \ 'file_metadata', 'valueType': 'string'}, {'category': 'file_naming', 'key':\
+          \ 'engineerCode', 'name': '文件名工程师缩写', 'unit': None, 'id': 'file_naming.engineerCode',\
+          \ 'extractionMode': 'file_metadata', 'valueType': 'string'}, {'category':\
+          \ 'file_naming', 'key': 'date', 'name': '文件名日期', 'unit': None, 'id': 'file_naming.date',\
+          \ 'extractionMode': 'file_metadata', 'valueType': 'string'}, {'category':\
+          \ 'document_info', 'key': 'drawingNumber', 'name': '图号', 'unit': None, 'id':\
+          \ 'document_info.drawingNumber', 'extractionMode': 'ocr', 'valueType': 'string'},\
+          \ {'category': 'document_info', 'key': 'partNumber', 'name': '料号', 'unit':\
+          \ None, 'id': 'document_info.partNumber', 'extractionMode': 'ocr', 'valueType':\
+          \ 'string'}, {'category': 'document_info', 'key': 'materialDescription',\
+          \ 'name': '信息区物料描述', 'unit': None, 'id': 'document_info.materialDescription',\
+          \ 'extractionMode': 'ocr', 'valueType': 'string'}, {'category': 'document_info',\
+          \ 'key': 'revision', 'name': '标题栏版本号', 'unit': None, 'id': 'document_info.revision',\
+          \ 'extractionMode': 'ocr', 'valueType': 'string'}, {'category': 'document_info',\
+          \ 'key': 'revisionHistory', 'name': '版本历史', 'unit': None, 'id': 'document_info.revisionHistory',\
+          \ 'extractionMode': 'ocr', 'valueType': 'array'}, {'category': 'document_info',\
+          \ 'key': 'drawingDate', 'name': '制图日期', 'unit': None, 'id': 'document_info.drawingDate',\
+          \ 'extractionMode': 'ocr', 'valueType': 'string', 'extractionHint': '从信息区提取联想标题栏\
+          \ DECIPHER DATE 对应的日期，作为制图日期；使用该日期文字所在 OCR 行作证据。DE BY、DL BY、DM BY 的日期属于制图签核，不得代替此字段。'},\
+          \ {'category': 'document_info', 'key': 'approvals', 'name': '制图签核', 'unit':\
+          \ None, 'id': 'document_info.approvals', 'extractionMode': 'ocr', 'valueType':\
+          \ 'object'}, {'category': 'document_info', 'key': 'scale', 'name': '图纸比例',\
+          \ 'unit': None, 'id': 'document_info.scale', 'extractionMode': 'ocr', 'valueType':\
+          \ 'string'}, {'category': 'document_info', 'key': 'sheetSize', 'name': '图纸幅面',\
+          \ 'unit': None, 'id': 'document_info.sheetSize', 'extractionMode': 'ocr',\
+          \ 'valueType': 'string', 'extractionHint': '仅提取 A0、A1、A2、A3、A4 等图纸幅面，不提取包装成品尺寸。'},\
+          \ {'category': 'document_info', 'key': 'unit', 'name': '尺寸单位', 'unit': 'mm',\
+          \ 'id': 'document_info.unit', 'extractionMode': 'ocr', 'valueType': 'string'},\
+          \ {'category': 'document_info', 'key': 'project', 'name': '项目名称', 'unit':\
+          \ None, 'id': 'document_info.project', 'extractionMode': 'ocr', 'valueType':\
+          \ 'string'}, {'category': 'notes', 'key': 'confidentiality', 'name': '保密声明',\
+          \ 'unit': None, 'id': 'notes.confidentiality', 'extractionMode': 'ocr',\
+          \ 'valueType': 'string'}, {'category': 'document_info', 'key': 'borderZone',\
+          \ 'name': '边框区存在性', 'unit': None, 'id': 'document_info.borderZone', 'extractionMode':\
+          \ 'visual', 'valueType': 'presence', 'allowedValues': ['present'], 'extractionHint':\
+          \ '根据外框、页边坐标编号或边框线索判断；存在时输出 present，不存在时不要猜测。'}, {'category': 'document_info',\
+          \ 'key': 'drawingZone', 'name': '制图区存在性', 'unit': None, 'id': 'document_info.drawingZone',\
+          \ 'extractionMode': 'visual', 'valueType': 'presence', 'allowedValues':\
+          \ ['present'], 'extractionHint': '根据页面中央的展开图、尺寸标注、刀线或压痕图例判断；存在时输出 present。'},\
+          \ {'category': 'document_info', 'key': 'specificationZone', 'name': '说明区存在性',\
+          \ 'unit': None, 'id': 'document_info.specificationZone', 'extractionMode':\
+          \ 'visual', 'valueType': 'presence', 'allowedValues': ['present'], 'extractionHint':\
+          \ '根据 ITEMS、SPEC.、REMARK、材料、强度、尺寸等说明表格标题判断；存在时输出 present。'}, {'category':\
+          \ 'document_info', 'key': 'informationZone', 'name': '信息区存在性', 'unit': None,\
+          \ 'id': 'document_info.informationZone', 'extractionMode': 'visual', 'valueType':\
+          \ 'presence', 'allowedValues': ['present'], 'extractionHint': '根据 PROJECT、SCALE、UNIT、DRAWING\
+          \ NO.、签名和日期等标题栏字段判断；存在时输出 present。'}, {'category': 'document_info', 'key':\
+          \ 'revisionZone', 'name': '版本区存在性', 'unit': None, 'id': 'document_info.revisionZone',\
+          \ 'extractionMode': 'visual', 'valueType': 'presence', 'allowedValues':\
+          \ ['present'], 'extractionHint': '根据 REVISIONS、REV、DESCRIPTION、版本描述等字段判断；存在时输出\
+          \ present。'}, {'category': 'document_info', 'key': 'borderGrid', 'name':\
+          \ '边框坐标标识存在性', 'unit': None, 'id': 'document_info.borderGrid', 'extractionMode':\
+          \ 'visual', 'valueType': 'presence', 'allowedValues': ['present'], 'extractionHint':\
+          \ '只判断边框坐标标识是否可见；有水平数字或垂直字母标识时输出 present。不要输出编号序列，也不要把边框编号当作包装尺寸。'}, {'category':\
+          \ 'document_info', 'key': 'presentViews', 'name': '已有视图类型', 'unit': None,\
+          \ 'id': 'document_info.presentViews', 'extractionMode': 'visual', 'valueType':\
+          \ 'array', 'allowedValues': ['dieline', 'dimension', 'formed', 'assembly',\
+          \ 'artwork', 'model'], 'extractionHint': '返回确实出现的视图类型数组，不凭标题猜测。'}, {'category':\
+          \ 'dimensions', 'key': 'overallLength', 'name': '总长', 'unit': 'mm', 'id':\
+          \ 'dimensions.overallLength', 'extractionMode': 'derived', 'valueType':\
+          \ 'string', 'derivedFrom': ['dimensions.outerSize', 'dimensions.finishedSize',\
+          \ 'dimensions.overallSize', 'dimensions.flatSize'], 'extractionHint': '由代码从外尺寸、成型尺寸或展平尺寸拆分，模型保持\
+          \ null。'}, {'category': 'dimensions', 'key': 'overallWidth', 'name': '总宽',\
+          \ 'unit': 'mm', 'id': 'dimensions.overallWidth', 'extractionMode': 'derived',\
+          \ 'valueType': 'measurement', 'derivedFrom': ['dimensions.outerSize', 'dimensions.finishedSize',\
+          \ 'dimensions.overallSize', 'dimensions.flatSize'], 'extractionHint': '由代码从外尺寸、成型尺寸或展平尺寸拆分，模型保持\
+          \ null。'}, {'category': 'dimensions', 'key': 'overallHeight', 'name': '总高',\
+          \ 'unit': 'mm', 'id': 'dimensions.overallHeight', 'extractionMode': 'derived',\
+          \ 'valueType': 'string', 'derivedFrom': ['dimensions.outerSize', 'dimensions.finishedSize',\
+          \ 'dimensions.overallSize'], 'extractionHint': '由代码从外尺寸或成型尺寸拆分；二维片材保持 null，模型保持\
+          \ null。'}, {'category': 'material_properties', 'key': 'grossWeight', 'name':\
+          \ '毛重', 'unit': 'g', 'id': 'material_properties.grossWeight', 'extractionMode':\
+          \ 'ocr', 'valueType': 'measurement'}, {'category': 'material_properties',\
+          \ 'key': 'weightTolerance', 'name': '重量公差', 'unit': '%', 'id': 'material_properties.weightTolerance',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'process_printing',\
+          \ 'key': 'printing', 'name': '印刷信息', 'unit': None, 'id': 'process_printing.printing',\
+          \ 'extractionMode': 'ocr', 'valueType': 'string'}, {'category': 'process_printing',\
+          \ 'key': 'finishingSequence', 'name': '印后工艺顺序', 'unit': None, 'id': 'process_printing.finishingSequence',\
+          \ 'extractionMode': 'ocr', 'valueType': 'string'}, {'category': 'notes',\
+          \ 'key': 'standardNotes', 'name': '标准备注完整性', 'unit': None, 'id': 'notes.standardNotes',\
+          \ 'extractionMode': 'ocr', 'valueType': 'array'}]\nMATERIAL_TEMPLATES =\
+          \ {'corrugated': [{'category': 'structure', 'key': 'productType', 'name':\
+          \ '瓦楞产品类型', 'unit': None, 'id': 'structure.productType', 'extractionMode':\
+          \ 'visual', 'valueType': 'string', 'extractionHint': '包装制品用途/形态，如附件盒、运输箱、衬垫；不得填写材料类别。'},\
+          \ {'category': 'material_properties', 'key': 'fluteType', 'name': '楞型',\
+          \ 'unit': None, 'id': 'material_properties.fluteType', 'extractionMode':\
+          \ 'ocr', 'valueType': 'string'}, {'category': 'material_properties', 'key':\
+          \ 'wallType', 'name': '瓦楞层数', 'unit': None, 'id': 'material_properties.wallType',\
+          \ 'extractionMode': 'ocr', 'valueType': 'string', 'allowedValues': ['single_wall',\
+          \ 'double_wall'], 'extractionHint': '单瓦楞为 single_wall，双瓦楞为 double_wall；仅当配纸层次或图纸明确支持时填写。'},\
+          \ {'category': 'material_properties', 'key': 'paperCombination', 'name':\
+          \ '配纸结构', 'unit': None, 'id': 'material_properties.paperCombination', 'extractionMode':\
+          \ 'ocr', 'valueType': 'string'}, {'category': 'structure', 'key': 'fluteDirection',\
+          \ 'name': '楞向', 'unit': None, 'id': 'structure.fluteDirection', 'extractionMode':\
+          \ 'visual', 'valueType': 'string', 'extractionHint': '视觉字段。由多模态模型综合识别楞向箭头、成组平行线、局部剖面或纹理、文字与图形组合等表达；输出相对页面方向、标注方式、证据区域和置信度。不得仅依赖‘楞向’关键词，也不得根据\
+          \ E/B/BC/F 楞型推断方向；证据不足时保持 null。'}, {'category': 'dimensions', 'key': 'innerSize',\
+          \ 'name': '内尺寸', 'unit': 'mm', 'id': 'dimensions.innerSize', 'extractionMode':\
+          \ 'ocr', 'valueType': 'measurement'}, {'category': 'dimensions', 'key':\
+          \ 'outerSize', 'name': '外尺寸', 'unit': 'mm', 'id': 'dimensions.outerSize',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'dimensions',\
+          \ 'key': 'flatSize', 'name': '展开尺寸', 'unit': 'mm', 'id': 'dimensions.flatSize',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'dimensions',\
+          \ 'key': 'blankSize', 'name': '开料尺寸', 'unit': 'mm', 'id': 'dimensions.blankSize',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'dimensions',\
+          \ 'key': 'sizeTolerance', 'name': '成型尺寸公差', 'unit': 'mm', 'id': 'dimensions.sizeTolerance',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'dimensions',\
+          \ 'key': 'flatTolerance', 'name': '展开尺寸公差', 'unit': 'mm', 'id': 'dimensions.flatTolerance',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'material_properties',\
+          \ 'key': 'burstStrength', 'name': '图纸声明耐破指标', 'unit': 'kPa', 'id': 'material_properties.burstStrength',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement', 'extractionHint':\
+          \ '只提取图纸声明的耐破设计指标，不代表实物检测结果。'}, {'category': 'material_properties', 'key':\
+          \ 'compressionStrength', 'name': '图纸声明空箱抗压指标', 'unit': 'kgf', 'id': 'material_properties.compressionStrength',\
+          \ 'extractionMode': 'ocr', 'valueType': 'string', 'extractionHint': '只提取图纸声明的空箱抗压设计指标或\
+          \ NA，不代表实物检测结果。'}, {'category': 'structure', 'key': 'manufacturingJoint',\
+          \ 'name': '制造结合方式', 'unit': None, 'id': 'structure.manufacturingJoint',\
+          \ 'extractionMode': 'ocr', 'valueType': 'string'}, {'category': 'marks_certification',\
+          \ 'key': 'fscLabel', 'name': 'FSC标签', 'unit': None, 'id': 'marks_certification.fscLabel',\
+          \ 'extractionMode': 'visual', 'valueType': 'string', 'allowedValues': ['present'],\
+          \ 'extractionHint': '仅识别 FSC 森林认证标签，不能等同于包装回收标志。'}], 'molded_pulp': [{'category':\
+          \ 'structure', 'key': 'productType', 'name': '纸浆模产品类型', 'unit': None, 'id':\
+          \ 'structure.productType', 'extractionMode': 'visual', 'valueType': 'string',\
+          \ 'extractionHint': '包装制品用途/形态，如附件盒、运输箱、衬垫；不得填写材料类别。'}, {'category': 'material_properties',\
+          \ 'key': 'pulpRatio', 'name': '浆料配比', 'unit': None, 'id': 'material_properties.pulpRatio',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'dimensions',\
+          \ 'key': 'overallSize', 'name': '成型尺寸', 'unit': 'mm', 'id': 'dimensions.overallSize',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'dimensions',\
+          \ 'key': 'innerOuterSize', 'name': '内外径尺寸', 'unit': 'mm', 'id': 'dimensions.innerOuterSize',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'material_properties',\
+          \ 'key': 'wallThickness', 'name': '壁厚', 'unit': 'mm', 'id': 'material_properties.wallThickness',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'material_properties',\
+          \ 'key': 'density', 'name': '密度', 'unit': 'g/cm³', 'id': 'material_properties.density',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'material_properties',\
+          \ 'key': 'moisture', 'name': '含水率', 'unit': '%', 'id': 'material_properties.moisture',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'structure',\
+          \ 'key': 'testCouponSize', 'name': '片材测试区', 'unit': 'mm', 'id': 'structure.testCouponSize',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'marks_certification',\
+          \ 'key': 'orientationMark', 'name': '方向标识', 'unit': None, 'id': 'marks_certification.orientationMark',\
+          \ 'extractionMode': 'visual', 'valueType': 'string', 'allowedValues': ['present']}],\
+          \ 'tracing_paper': [{'category': 'material_properties', 'key': 'usage',\
+          \ 'name': '硫酸纸用途', 'unit': None, 'id': 'material_properties.usage', 'extractionMode':\
+          \ 'ocr', 'valueType': 'string'}, {'category': 'dimensions', 'key': 'flatSize',\
+          \ 'name': '展平尺寸', 'unit': 'mm', 'id': 'dimensions.flatSize', 'extractionMode':\
+          \ 'ocr', 'valueType': 'measurement'}, {'category': 'dimensions', 'key':\
+          \ 'sizeTolerance', 'name': '外形尺寸公差', 'unit': 'mm', 'id': 'dimensions.sizeTolerance',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'material_properties',\
+          \ 'key': 'grammage', 'name': '克重', 'unit': 'g/m²', 'id': 'material_properties.grammage',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'material_properties',\
+          \ 'key': 'thickness', 'name': '厚度', 'unit': 'mm', 'id': 'material_properties.thickness',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'process_printing',\
+          \ 'key': 'printingStyle', 'name': '印刷样式', 'unit': None, 'id': 'process_printing.printingStyle',\
+          \ 'extractionMode': 'ocr', 'valueType': 'string'}, {'category': 'process_printing',\
+          \ 'key': 'positionTolerance', 'name': '印刷位置公差', 'unit': 'mm', 'id': 'process_printing.positionTolerance',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'marks_certification',\
+          \ 'key': 'marks', 'name': '标识完整性', 'unit': None, 'id': 'marks_certification.marks',\
+          \ 'extractionMode': 'visual', 'valueType': 'string'}], 'bamboo_fiber': [{'category':\
+          \ 'material_properties', 'key': 'usage', 'name': '竹纤维用途', 'unit': None,\
+          \ 'id': 'material_properties.usage', 'extractionMode': 'ocr', 'valueType':\
+          \ 'string'}, {'category': 'dimensions', 'key': 'finishedSize', 'name': '成品尺寸',\
+          \ 'unit': 'mm', 'id': 'dimensions.finishedSize', 'extractionMode': 'ocr',\
+          \ 'valueType': 'measurement'}, {'category': 'dimensions', 'key': 'sizeTolerance',\
+          \ 'name': '外形尺寸公差', 'unit': 'mm', 'id': 'dimensions.sizeTolerance', 'extractionMode':\
+          \ 'ocr', 'valueType': 'measurement'}, {'category': 'material_properties',\
+          \ 'key': 'grammage', 'name': '克重', 'unit': 'g/m²', 'id': 'material_properties.grammage',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'structure',\
+          \ 'key': 'seamWidth', 'name': '封边宽度', 'unit': 'mm', 'id': 'structure.seamWidth',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'process_printing',\
+          \ 'key': 'printingStyle', 'name': '印刷样式', 'unit': None, 'id': 'process_printing.printingStyle',\
+          \ 'extractionMode': 'ocr', 'valueType': 'string'}, {'category': 'process_printing',\
+          \ 'key': 'positionTolerance', 'name': '印刷位置公差', 'unit': 'mm', 'id': 'process_printing.positionTolerance',\
+          \ 'extractionMode': 'ocr', 'valueType': 'measurement'}, {'category': 'marks_certification',\
+          \ 'key': 'marks', 'name': '标识完整性', 'unit': None, 'id': 'marks_certification.marks',\
+          \ 'extractionMode': 'visual', 'valueType': 'string'}]}\nNAMES = {'corrugated':'瓦楞','molded_pulp':'纸浆模','tracing_paper':'硫酸纸','bamboo_fiber':'竹纤维','unknown':'未知'}\n\
+          \nSTRUCTURE_CATALOG = {'catalogVersion': '1.0', 'scope': 'drawing-only-demo',\
+          \ 'categoryEvidenceRule': '展开结构关系是主证据；图纸名称、FOLD、GLUE 和楞型只能作为佐证。无法证明时返回 null。',\
+          \ 'categories': [{'code': 'flat_box', 'name': '平口箱', 'source': '联想消费笔记本包装设计标准\
+          \ V2026 §2.1.5.1', 'primaryEvidence': '连续箱面、接合边、顶底摇盖构成可展平的箱体', 'corroboration':\
+          \ 'GLUE、箱体名称仅作佐证，不单独决定类别', 'boundary': '不把预粘合盒或套盒强归入平口箱；具体 FEFCO 型号不在此处判定'},\
+          \ {'code': 'folding_box', 'name': '折叠盒', 'source': '联想消费笔记本包装设计标准 V2026\
+          \ §2.1.5.2', 'primaryEvidence': '一张展开料形成盒底、侧墙／围墙和盒盖，折叠成盒', 'corroboration':\
+          \ 'ACC BOX、CARTON、FOLD 仅作佐证', 'boundary': '不默认属于 0427；锁合件只在图纸确有标注时识别'},\
+          \ {'code': 'corrugated_pad', 'name': '非箱型瓦楞纸垫', 'source': '项目扩展类别；联想 §2.1.5\
+          \ 无直接箱型条款', 'primaryEvidence': '瓦楞板形成带折叠段或开孔的垫件，不构成完整闭合盒体', 'corroboration':\
+          \ 'PAPER PAD 名称仅作佐证', 'boundary': '不使用盒底、围墙和盒盖的成品盒名称'}], 'commonSpecs':\
+          \ [{'specId': 'drawing_dimensions.corrugated.overall.horizontal', 'name':\
+          \ '展开图横向总尺寸', 'part': '外轮廓', 'axis': '横向', 'source': '§4.2.3.1', 'condition':\
+          \ '尺寸线确实跨越外轮廓'}, {'specId': 'drawing_dimensions.corrugated.overall.vertical',\
+          \ 'name': '展开图纵向总尺寸', 'part': '外轮廓', 'axis': '纵向', 'source': '§4.2.3.1',\
+          \ 'condition': '尺寸线确实跨越外轮廓'}], 'specs': {'flat_box': [{'specId': 'drawing_dimensions.corrugated.flat_box.long_panel.length',\
+          \ 'name': '箱身长面长度', 'part': '箱身长面', 'axis': '长度', 'source': '§2.1.5.1；§4.2.3.1',\
+          \ 'condition': '必须能依据成品 L／W 或连接关系确认长面'}, {'specId': 'drawing_dimensions.corrugated.flat_box.long_panel.height',\
+          \ 'name': '箱身长面高度', 'part': '箱身长面', 'axis': '高度', 'source': '§2.1.5.1；§4.2.3.1',\
+          \ 'condition': '相同面重复标注可产生多个实例'}, {'specId': 'drawing_dimensions.corrugated.flat_box.short_panel.width',\
+          \ 'name': '箱身短面宽度', 'part': '箱身短面', 'axis': '宽度', 'source': '§2.1.5.1；§4.2.3.1',\
+          \ 'condition': '不能按图纸左右直接判为短面'}, {'specId': 'drawing_dimensions.corrugated.flat_box.short_panel.height',\
+          \ 'name': '箱身短面高度', 'part': '箱身短面', 'axis': '高度', 'source': '§2.1.5.1；§4.2.3.1',\
+          \ 'condition': '相同面重复标注可产生多个实例'}, {'specId': 'drawing_dimensions.corrugated.flat_box.top_main_flap.length',\
+          \ 'name': '顶部主摇盖长度', 'part': '顶部主摇盖', 'axis': '长度', 'source': '§2.1.5.1；§4.2.3.1',\
+          \ 'condition': '仅能证明与长面相连且位于成品顶部时使用'}, {'specId': 'drawing_dimensions.corrugated.flat_box.top_main_flap.depth',\
+          \ 'name': '顶部主摇盖深度', 'part': '顶部主摇盖', 'axis': '深度', 'source': '§2.1.5.1；§4.2.3.1',\
+          \ 'condition': '从连接折线量至自由边'}, {'specId': 'drawing_dimensions.corrugated.flat_box.top_side_flap.width',\
+          \ 'name': '顶部侧摇盖宽度', 'part': '顶部侧摇盖', 'axis': '宽度', 'source': '§2.1.5.1；§4.2.3.1',\
+          \ 'condition': '仅结构中存在侧摇盖时使用'}, {'specId': 'drawing_dimensions.corrugated.flat_box.top_side_flap.depth',\
+          \ 'name': '顶部侧摇盖深度', 'part': '顶部侧摇盖', 'axis': '深度', 'source': '§2.1.5.1；§4.2.3.1',\
+          \ 'condition': '从连接折线量至自由边'}, {'specId': 'drawing_dimensions.corrugated.flat_box.bottom_main_flap.length',\
+          \ 'name': '底部主摇盖长度', 'part': '底部主摇盖', 'axis': '长度', 'source': '§2.1.5.1；§4.2.3.1',\
+          \ 'condition': '不能只按页面上下判成品顶底'}, {'specId': 'drawing_dimensions.corrugated.flat_box.bottom_main_flap.depth',\
+          \ 'name': '底部主摇盖深度', 'part': '底部主摇盖', 'axis': '深度', 'source': '§2.1.5.1；§4.2.3.1',\
+          \ 'condition': '从连接折线量至自由边'}, {'specId': 'drawing_dimensions.corrugated.flat_box.bottom_side_flap.width',\
+          \ 'name': '底部侧摇盖宽度', 'part': '底部侧摇盖', 'axis': '宽度', 'source': '§2.1.5.1；§4.2.3.1',\
+          \ 'condition': '仅结构中存在侧摇盖时使用'}, {'specId': 'drawing_dimensions.corrugated.flat_box.bottom_side_flap.depth',\
+          \ 'name': '底部侧摇盖深度', 'part': '底部侧摇盖', 'axis': '深度', 'source': '§2.1.5.1；§4.2.3.1',\
+          \ 'condition': '从连接折线量至自由边'}, {'specId': 'drawing_dimensions.corrugated.flat_box.joint_flap.width',\
+          \ 'name': '接合片宽度', 'part': '接合片', 'axis': '宽度', 'source': '§2.1.5.1；§4.2.3.1',\
+          \ 'condition': '须由接合边位置及相邻折线证明；GLUE 文字不足以定位'}], 'folding_box': [{'specId':\
+          \ 'drawing_dimensions.corrugated.folding_box.bottom.length', 'name': '盒底长度',\
+          \ 'part': '盒底', 'axis': '长度', 'source': '§2.1.5.2；§4.2.3.1', 'condition':\
+          \ '一纸成型中可确认的成品盒底'}, {'specId': 'drawing_dimensions.corrugated.folding_box.bottom.width',\
+          \ 'name': '盒底宽度', 'part': '盒底', 'axis': '宽度', 'source': '§2.1.5.2；§4.2.3.1',\
+          \ 'condition': '不可把图纸最下方板片直接当盒底'}, {'specId': 'drawing_dimensions.corrugated.folding_box.front_wall.length',\
+          \ 'name': '前围墙长度', 'part': '前围墙', 'axis': '长度', 'source': '§2.1.5.2；§4.2.3.1；项目方位细分',\
+          \ 'condition': '前缘由盒盖闭合关系确定'}, {'specId': 'drawing_dimensions.corrugated.folding_box.front_wall.height',\
+          \ 'name': '前围墙高度', 'part': '前围墙', 'axis': '高度', 'source': '§2.1.5.2；§4.2.3.1；项目方位细分',\
+          \ 'condition': '前后关系不明时不得使用'}, {'specId': 'drawing_dimensions.corrugated.folding_box.rear_wall.length',\
+          \ 'name': '后围墙长度', 'part': '后围墙', 'axis': '长度', 'source': '§2.1.5.2；§4.2.3.1；项目方位细分',\
+          \ 'condition': '后缘通常与盖部连接，须由图纸证明'}, {'specId': 'drawing_dimensions.corrugated.folding_box.rear_wall.height',\
+          \ 'name': '后围墙高度', 'part': '后围墙', 'axis': '高度', 'source': '§2.1.5.2；§4.2.3.1；项目方位细分',\
+          \ 'condition': '前后关系不明时不得使用'}, {'specId': 'drawing_dimensions.corrugated.folding_box.side_wall.width',\
+          \ 'name': '侧墙宽度', 'part': '侧墙', 'axis': '宽度', 'source': '§2.1.5.2；§4.2.3.1',\
+          \ 'condition': '左右两侧可共用此 specId，按证据行区分实例'}, {'specId': 'drawing_dimensions.corrugated.folding_box.side_wall.height',\
+          \ 'name': '侧墙高度', 'part': '侧墙', 'axis': '高度', 'source': '§2.1.5.2；§4.2.3.1',\
+          \ 'condition': '不确定成品左／右时仍可使用侧墙'}, {'specId': 'drawing_dimensions.corrugated.folding_box.lid.length',\
+          \ 'name': '盒盖长度', 'part': '盒盖', 'axis': '长度', 'source': '§2.1.5.2；§4.2.3.1',\
+          \ 'condition': '须识别盖部与盒底／后围墙连接关系'}, {'specId': 'drawing_dimensions.corrugated.folding_box.lid.width',\
+          \ 'name': '盒盖宽度', 'part': '盒盖', 'axis': '宽度', 'source': '§2.1.5.2；§4.2.3.1',\
+          \ 'condition': '不能把盒盖尺寸直接当成品 L／W／H'}, {'specId': 'drawing_dimensions.corrugated.folding_box.lid_wing.width',\
+          \ 'name': '盖侧翼片宽度', 'part': '盖侧翼片', 'axis': '宽度', 'source': '§2.1.5.2；§4.2.3.1；项目细分',\
+          \ 'condition': '仅实际存在随盒盖折合的翼片时使用'}, {'specId': 'drawing_dimensions.corrugated.folding_box.lid_wing.depth',\
+          \ 'name': '盖侧翼片深度', 'part': '盖侧翼片', 'axis': '深度', 'source': '§2.1.5.2；§4.2.3.1；项目细分',\
+          \ 'condition': '不能把普通侧墙误当盖侧翼'}, {'specId': 'drawing_dimensions.corrugated.folding_box.lock_tab.width',\
+          \ 'name': '锁合舌片宽度', 'part': '锁合舌片', 'axis': '宽度', 'source': '§2.1.5.2“锁扣”；§4.2.3.1',\
+          \ 'condition': '仅确有锁合舌片时使用；不预设 0427'}, {'specId': 'drawing_dimensions.corrugated.folding_box.lock_tab.depth',\
+          \ 'name': '锁合舌片深度', 'part': '锁合舌片', 'axis': '深度', 'source': '§2.1.5.2“锁扣”；§4.2.3.1',\
+          \ 'condition': '从连接折线量至舌片端部'}, {'specId': 'drawing_dimensions.corrugated.folding_box.lock_hole.width',\
+          \ 'name': '锁孔宽度', 'part': '锁孔', 'axis': '宽度', 'source': '§2.1.5.2“锁扣”；§4.2.3.1',\
+          \ 'condition': '仅图纸有对应尺寸标注时使用'}, {'specId': 'drawing_dimensions.corrugated.folding_box.lock_hole.height',\
+          \ 'name': '锁孔高度', 'part': '锁孔', 'axis': '高度', 'source': '§2.1.5.2“锁扣”；§4.2.3.1',\
+          \ 'condition': '仅图纸有对应尺寸标注时使用'}], 'corrugated_pad': [{'specId': 'drawing_dimensions.corrugated.corrugated_pad.main_panel.length',\
+          \ 'name': '主垫面长度', 'part': '主垫面', 'axis': '长度', 'source': '项目扩展；§4.2.3.1',\
+          \ 'condition': '须由纸垫结构确认主体板片'}, {'specId': 'drawing_dimensions.corrugated.corrugated_pad.main_panel.width',\
+          \ 'name': '主垫面宽度', 'part': '主垫面', 'axis': '宽度', 'source': '项目扩展；§4.2.3.1',\
+          \ 'condition': '不按面积最大自动命名'}, {'specId': 'drawing_dimensions.corrugated.corrugated_pad.fold_segment.length',\
+          \ 'name': '折叠段长度', 'part': '折叠段', 'axis': '长度', 'source': '项目扩展；§4.2.3.1',\
+          \ 'condition': '多段共用 specId，以证据行区分实例'}, {'specId': 'drawing_dimensions.corrugated.corrugated_pad.fold_segment.width',\
+          \ 'name': '折叠段宽度', 'part': '折叠段', 'axis': '宽度', 'source': '项目扩展；§4.2.3.1',\
+          \ 'condition': '须见明确折线或压痕分段'}, {'specId': 'drawing_dimensions.corrugated.corrugated_pad.end_flap.length',\
+          \ 'name': '端部翼片长度', 'part': '端部翼片', 'axis': '长度', 'source': '项目扩展；§4.2.3.1',\
+          \ 'condition': '仅确有端部折返／定位翼片时使用'}, {'specId': 'drawing_dimensions.corrugated.corrugated_pad.end_flap.width',\
+          \ 'name': '端部翼片宽度', 'part': '端部翼片', 'axis': '宽度', 'source': '项目扩展；§4.2.3.1',\
+          \ 'condition': '不能把普通凸起都称为翼片'}, {'specId': 'drawing_dimensions.corrugated.corrugated_pad.hole.diameter',\
+          \ 'name': '定位孔直径', 'part': '定位孔', 'axis': '直径', 'source': '项目扩展；§4.2.3.1.3–4',\
+          \ 'condition': '仅圆孔且标注直径时使用'}, {'specId': 'drawing_dimensions.corrugated.corrugated_pad.slot.length',\
+          \ 'name': '槽口长度', 'part': '槽口', 'axis': '长度', 'source': '项目扩展；§4.2.3.1.3–4',\
+          \ 'condition': '仅有槽口尺寸线时使用'}, {'specId': 'drawing_dimensions.corrugated.corrugated_pad.slot.width',\
+          \ 'name': '槽口宽度', 'part': '槽口', 'axis': '宽度', 'source': '项目扩展；§4.2.3.1.3–4',\
+          \ 'condition': '仅有槽口尺寸线时使用'}, {'specId': 'drawing_dimensions.corrugated.corrugated_pad.hole.to_edge',\
+          \ 'name': '定位孔至基准边距离', 'part': '定位孔', 'axis': '距离', 'source': '项目扩展；§4.2.3.1.3–4',\
+          \ 'condition': '必须明确孔和所量基准边'}, {'specId': 'drawing_dimensions.corrugated.corrugated_pad.slot.to_edge',\
+          \ 'name': '槽口至基准边距离', 'part': '槽口', 'axis': '距离', 'source': '项目扩展；§4.2.3.1.3–4',\
+          \ 'condition': '必须明确槽口和所量基准边'}]}}\n\ndef main(classification_text: str,\
+          \ file_name: str, ocr_lines: str) -> dict:\n    text = re.sub(r'^```(?:json)?\\\
+          s*|\\s*```$', '', str(classification_text or '').strip(), flags=re.I)\n\
+          \    try: profile = json.loads(text)\n    except Exception: profile = {}\n\
+          \    if not isinstance(profile, dict): profile = {}\n    material_type =\
+          \ profile.get('materialType') if profile.get('materialType') in MATERIAL_TEMPLATES\
+          \ else 'unknown'\n    try: rows = json.loads(ocr_lines)\n    except Exception:\
+          \ rows = []\n    valid_indexes = {r.get('i') for r in rows if isinstance(r,\
+          \ dict)} if isinstance(rows, list) else set()\n    evidence = profile.get('evidenceLineIndexes')\n\
+          \    corroboration = profile.get('corroboratingLineIndexes')\n    if not\
+          \ isinstance(evidence, list): evidence = []\n    if not isinstance(corroboration,\
+          \ list): corroboration = []\n    if profile.get('verificationStatus') ==\
+          \ 'conflict': material_type = 'unknown'\n    if material_type != 'unknown'\
+          \ and (any(i not in valid_indexes for i in evidence + corroboration) or\n\
+          \        not (evidence or corroboration or str(profile.get('visualEvidence')\
+          \ or '').strip())):\n        material_type = 'unknown'\n        profile['reason']\
+          \ = '材料分类缺少有效 OCR 或视觉证据'\n\n    profile['materialType'] = material_type\n\
+          \    profile['materialName'] = NAMES[material_type]\n    category_code =\
+          \ profile.get('structureCategory') if material_type == 'corrugated' else\
+          \ None\n    allowed = {c['code']: c for c in STRUCTURE_CATALOG['categories']}\n\
+          \    try: category_confidence = float(profile.get('structureConfidence')\
+          \ or 0)\n    except (TypeError, ValueError): category_confidence = 0.0\n\
+          \    primary = str(profile.get('structurePrimaryEvidence') or '').strip()\n\
+          \    if category_code not in allowed or profile.get('structureConflict')\
+          \ or category_confidence < 0.60 or len(primary) < 5:\n        category_code\
+          \ = None\n    corroboration = profile.get('structureCorroboratingLineIndexes')\n\
+          \    if not isinstance(corroboration, list): corroboration = []\n    if\
+          \ any(i not in valid_indexes for i in corroboration):\n        category_code\
+          \ = None\n    for raw_key in ('structureConfidence','structurePrimaryEvidence','structureCorroboratingLineIndexes','structureConflict'):\n\
+          \        profile.pop(raw_key, None)\n    profile['structureCategoryCode']\
+          \ = category_code\n    profile['structureCategory'] = allowed[category_code]['name']\
+          \ if category_code else None\n    profile['structureCategoryConfidence']\
+          \ = round(category_confidence, 4) if category_code else 0\n    profile['structureCategoryEvidence']\
+          \ = primary if category_code else ''\n    profile['structureCategoryCorroboratingLineIndexes']\
+          \ = [i for i in corroboration if i in valid_indexes]\n    chosen_specs =\
+          \ STRUCTURE_CATALOG['commonSpecs'] + STRUCTURE_CATALOG['specs'].get(category_code,\
+          \ []) if material_type == 'corrugated' else []\n    structure_specs = [{'specId':s['specId'],'name':s['name'],'part':s['part'],'axis':s['axis'],'condition':s['condition']}\
+          \ for s in chosen_specs]\n    fields = COMMON_TEMPLATE + MATERIAL_TEMPLATES.get(material_type,\
+          \ [])\n    template = {'schemaId':'packaging-'+material_type,'schemaVersion':SCHEMA_VERSION,'materialType':material_type,\n\
+          \                'fields':[{**field,'value':None,'lineIndexes':[],'valueSource':field['extractionMode']}\
+          \ for field in fields]}\n    def compact(field):\n        result = {'id':field['id'],'name':field['name']}\n\
+          \        for key in ('valueType','allowedValues','extractionHint'):\n  \
+          \          if field.get(key): result[key] = field[key]\n        return result\n\
+          \    ocr_fields = [compact(f) for f in fields if f['extractionMode'] ==\
+          \ 'ocr']\n    visual_fields = [compact(f) for f in fields if f['extractionMode']\
+          \ == 'visual']\n    return {'llm_template':json.dumps(ocr_fields,ensure_ascii=False,separators=(',',':')),\n\
+          \            'visual_template':json.dumps(visual_fields,ensure_ascii=False,separators=(',',':')),\n\
+          \            'merged_template':json.dumps(template,ensure_ascii=False,separators=(',',':')),\n\
+          \            'structure_spec_catalog':json.dumps(structure_specs,ensure_ascii=False,separators=(',',':')),\n\
+          \            'material_type':material_type,\n            'material_profile':json.dumps(profile,ensure_ascii=False,separators=(',',':'))}\n"
+        code_language: python3
+        desc: 集中维护通用模板与四类材料模板，并按分类结果确定性合并
+        outputs:
+          llm_template:
+            children: null
+            type: string
+          material_profile:
+            children: null
+            type: string
+          material_type:
+            children: null
+            type: string
+          merged_template:
+            children: null
+            type: string
+          structure_spec_catalog:
+            children: null
+            type: string
+          visual_template:
+            children: null
+            type: string
+        selected: false
+        title: 根据材料类型获取 Spec 模板
+        type: code
+        variables:
+        - value_selector:
+          - '1788935300000'
+          - text
+          value_type: string
+          variable: classification_text
+        - value_selector:
+          - '1788932193539'
+          - source_file_name
+          value_type: string
+          variable: file_name
+        - value_selector:
+          - '1788935200000'
+          - ocr_lines
+          value_type: string
+          variable: ocr_lines
+      height: 96
+      id: '1788935350000'
+      position:
+        x: 1710
+        y: 145.5
+      positionAbsolute:
+        x: 1710
+        y: 145.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        code: "import json\nimport re\n\nGROUPS = [\n    ('file_naming','图纸命名'),('document_info','图纸基本信息'),('dimensions','尺寸与公差'),('drawing_dimensions','制图区尺寸'),\n\
+          \    ('material_properties','材料与物性'),('structure','结构与成型'),\n    ('process_printing','工艺与印刷'),('marks_certification','标识与认证'),\n\
+          \    ('notes','备注与要求'),('other','其他识别元素')\n]\n\ndef load(value, fallback):\n\
+          \    if isinstance(value, (dict, list)):\n        return value\n    text\
+          \ = str(value or '').strip()\n    text = re.sub(r'^```(?:json)?\\s*|\\s*```$',\
+          \ '', text, flags=re.I)\n    try:\n        return json.loads(text)\n   \
+          \ except Exception:\n        return fallback\n\ndef rect(box, width, height):\n\
+          \    if not isinstance(box, list) or len(box) != 4:\n        return None\n\
+          \    x1,y1,x2,y2 = [float(v) for v in box]\n    return {'type':'rect','x':round(x1/width,6),'y':round(y1/height,6),\n\
+          \            'width':round(max(0,x2-x1)/width,6),'height':round(max(0,y2-y1)/height,6)}\n\
+          \n\nSCALE_VALUE_PATTERN = re.compile(r'(?<![0-9.])(?:\\d+(?:\\.\\d+)?\\\
+          s*%|\\d+\\s*:\\s*\\d+)(?![0-9.])')\n\ndef find_labeled_scale(rows, width,\
+          \ height):\n    labels = [row for row in rows if re.search(r'(?i)\\bSCALE\\\
+          b|比例', str(row.get('text','')))]\n    candidates = []\n    for row in rows:\n\
+          \        match = SCALE_VALUE_PATTERN.search(str(row.get('text','')))\n \
+          \       if match:\n            candidates.append((row, re.sub(r'\\s+', '',\
+          \ match.group(0))))\n    for label in labels:\n        same = SCALE_VALUE_PATTERN.search(str(label.get('text','')))\n\
+          \        if same:\n            return re.sub(r'\\s+', '', same.group(0)),\
+          \ [label.get('i')]\n    best = None\n    for label in labels:\n        lb\
+          \ = label.get('box')\n        if not isinstance(lb, list) or len(lb) !=\
+          \ 4:\n            continue\n        lcx, lcy = (float(lb[0])+float(lb[2]))/2,\
+          \ (float(lb[1])+float(lb[3]))/2\n        lh = max(1.0, float(lb[3])-float(lb[1]))\n\
+          \        for row, value in candidates:\n            rb = row.get('box')\n\
+          \            if not isinstance(rb, list) or len(rb) != 4 or row.get('i')\
+          \ == label.get('i'):\n                continue\n            rcx, rcy = (float(rb[0])+float(rb[2]))/2,\
+          \ (float(rb[1])+float(rb[3]))/2\n            rh = max(1.0, float(rb[3])-float(rb[1]))\n\
+          \            if abs(rcy-lcy) > max(height*0.035, 2.5*max(lh,rh)):\n    \
+          \            continue\n            if rcx < float(lb[0])-width*0.02 or rcx-lcx\
+          \ > width*0.4:\n                continue\n            score = abs(rcy-lcy)/height\
+          \ + abs(rcx-lcx)/width\n            if best is None or score < best[0]:\n\
+          \                best = (score, value, [label.get('i'), row.get('i')])\n\
+          \    return (best[1], list(dict.fromkeys(i for i in best[2] if i is not\
+          \ None))) if best else (None, [])\n\n\ndef filename_fields(name):\n    \"\
+          \"\"Parse only explicit tokens; absence or ambiguity remains unfilled.\"\
+          \"\"\n    text = str(name or '').strip()\n    if not text:\n        return\
+          \ {}\n    stem = re.sub(r'\\.(?:pdf|png|jpe?g)$', '', text, flags=re.I)\n\
+          \    result = {'file_naming.fullName': text}\n    match = re.search(r'(?<![A-Za-z0-9])[A-Za-z]{1,4}[A-Za-z0-9]{7,15}(?![A-Za-z0-9])',\
+          \ stem)\n    if match:\n        result['file_naming.partNumber'] = match.group(0)\n\
+          \    match = re.search(r'(?<!\\d)(?:19|20)\\d{6}(?!\\d)', stem)\n    if\
+          \ match:\n        result['file_naming.date'] = match.group(0)\n    match\
+          \ = re.search(r'(?<![A-Za-z0-9])V\\d{2}(?![A-Za-z0-9])', stem, re.I)\n \
+          \   if match:\n        result['file_naming.revision'] = match.group(0)\n\
+          \    return result\n\n\ndef labeled_dimensions(value):\n    \"\"\"Parse\
+          \ drawing size values after a dimension field has been identified.\"\"\"\
+          \n    text = str(value or '').upper().replace('×', 'X').replace('Ｘ', 'X').replace('＊',\
+          \ '*')\n    # X or * between a number and the next axis is a separator,\
+          \ not a word prefix.\n    text = re.sub(r'(?<=\\d)\\s*[X*]\\s*(?=[LWH]\\\
+          s*[:=]?\\s*\\d)', ' ', text)\n    found = {}\n    for axis in 'LWH':\n \
+          \       match = re.search(r'(?<![A-Z])' + axis + r'\\s*[:=]?\\s*(\\d+(?:\\\
+          .\\d+)?)(?!\\d)', text)\n        if match:\n            found[axis] = match.group(1)\n\
+          \    if 'L' in found and 'W' in found:\n        return found\n    if found:\n\
+          \        return {}\n    # OCR may keep a printed SIZE heading in the same\
+          \ line as an unlabeled size.\n    text = re.sub(r'^\\s*SIZE\\b\\s*(?:\\\
+          ([^)]*\\))?\\s*[:=]?\\s*', '', text)\n    match = re.fullmatch(\n      \
+          \  r'\\s*(\\d+(?:\\.\\d+)?)\\s*[X*]\\s*(\\d+(?:\\.\\d+)?)'\n        r'(?:\\\
+          s*[X*]\\s*(\\d+(?:\\.\\d+)?))?\\s*(?:MM|毫米)?\\s*',\n        text,\n    )\n\
+          \    if not match:\n        return {}\n    result = {'L': match.group(1),\
+          \ 'W': match.group(2)}\n    if match.group(3) is not None:\n        result['H']\
+          \ = match.group(3)\n    return result\n\n\ndef valid_value(value, definition):\n\
+          \    allowed = definition.get('allowedValues')\n    if not allowed:\n  \
+          \      return True\n    if isinstance(value, list):\n        return all(item\
+          \ in allowed for item in value)\n    return value in allowed\n\ndef main(llm_text:\
+          \ str, ocr_lines: str, merged_template: str, material_profile: str, dimension_text:\
+          \ str, dimension_candidates: str, file_name: str, structure_spec_catalog:\
+          \ str) -> dict:\n    rows = load(ocr_lines, [])\n    if isinstance(rows,\
+          \ dict): rows = rows.get('rows', rows.get('items', []))\n    mapped = load(llm_text,\
+          \ {})\n    if not isinstance(mapped, dict): mapped = {}\n    template =\
+          \ load(merged_template, {})\n    profile_fallback = load(material_profile,\
+          \ {})\n    dimension_result = load(dimension_text, {})\n    selected_catalog\
+          \ = load(structure_spec_catalog, [])\n    if not isinstance(selected_catalog,\
+          \ list): selected_catalog = []\n    canonical_specs = {s['specId']: s for\
+          \ s in selected_catalog if isinstance(s, dict) and s.get('specId')}\n  \
+          \  drawing_dimensions = dimension_result.get('drawingDimensions', []) if\
+          \ isinstance(dimension_result, dict) else []\n    candidate_rows = load(dimension_candidates,\
+          \ [])\n    candidate_indexes = {int(r['i']) for r in candidate_rows if isinstance(r,\
+          \ dict) and str(r.get('i', '')).isdigit()}\n    unmatched_dimensions = dimension_result.get('unmatchedDimensionTexts',\
+          \ []) if isinstance(dimension_result, dict) else []\n    if not isinstance(unmatched_dimensions,\
+          \ list):\n        unmatched_dimensions = []\n    raw_fields = mapped.get('fields')\n\
+          \    normalized_field_map = False\n    if isinstance(raw_fields, dict):\n\
+          \        normalized_field_map = True\n        entries = []\n        for\
+          \ field_id, item in raw_fields.items():\n            if not isinstance(item,\
+          \ dict) or item.get('id', field_id) != field_id:\n                raise\
+          \ ValueError('字段填写节点 fields 对象的键与内部 id 不一致: ' + str(field_id))\n       \
+          \     entries.append({**item, 'id':field_id})\n        mapped['fields']\
+          \ = entries\n    elif not isinstance(raw_fields, list):\n        raise ValueError('字段填写节点\
+          \ fields 必须为数组或以原样 Spec ID 为键的对象；原始类型=' + type(raw_fields).__name__)\n \
+          \   definitions = {f['id']: f for f in template.get('fields', [])}\n   \
+          \ by_i = {r.get('i'): r for r in rows}\n    supplied = {}\n    validation_warnings\
+          \ = []\n    if normalized_field_map:\n        validation_warnings.append('ocr:normalized_fields_object_to_array')\n\
+          \    for source_name, entries, expected_mode in (\n        ('ocr', mapped['fields'],\
+          \ 'ocr'),\n        ('visual', dimension_result.get('visualFields', []) if\
+          \ isinstance(dimension_result, dict) else [], 'visual'),\n    ):\n     \
+          \   if not isinstance(entries, list):\n            raise ValueError(source_name\
+          \ + ' 节点返回的字段不是数组')\n        for entry in entries:\n            if not isinstance(entry,\
+          \ dict) or entry.get('id') not in definitions:\n                validation_warnings.append(source_name\
+          \ + ':unknown_id:' + str(entry.get('id') if isinstance(entry,dict) else\
+          \ entry))\n                continue\n            field_id = entry['id']\n\
+          \            definition = definitions[field_id]\n            if definition.get('extractionMode')\
+          \ != expected_mode or field_id in supplied:\n                validation_warnings.append(source_name\
+          \ + ':wrong_mode_or_duplicate:' + field_id)\n                continue\n\
+          \            value = entry.get('value')\n            if value is None or\
+          \ value == '':\n                continue\n            if not valid_value(value,\
+          \ definition):\n                validation_warnings.append(source_name +\
+          \ ':invalid_enum:' + field_id)\n                continue\n            indexes\
+          \ = entry.get('lineIndexes', [])\n            if not isinstance(indexes,\
+          \ list) or any(not isinstance(i,int) or i not in by_i for i in indexes):\n\
+          \                validation_warnings.append(source_name + ':invalid_evidence:'\
+          \ + field_id)\n                continue\n            if field_id == 'dimensions.flatSize'\
+          \ and expected_mode == 'ocr':\n                # OCR size fields may be\
+          \ written as one LxW value in a specification table.\n                if\
+          \ len(indexes) != 1:\n                    validation_warnings.append(source_name\
+          \ + ':invalid_sheet_size_evidence')\n                    continue\n    \
+          \            observed = labeled_dimensions(by_i[indexes[0]].get('text'))\n\
+          \                submitted = labeled_dimensions(value)\n               \
+          \ if not all(axis in observed and observed[axis] == submitted.get(axis)\
+          \ for axis in ('L', 'W')):\n                    validation_warnings.append(source_name\
+          \ + ':sheet_size_value_mismatch')\n                    continue\n      \
+          \          value = observed['L'] + '×' + observed['W'] + 'mm'\n        \
+          \    else:\n                if field_id == 'dimensions.flatSize':\n    \
+          \                # The model identifies the two full-span dimension labels;\
+          \ code reads their values.\n                    if len(indexes) != 2 or\
+          \ indexes[0] == indexes[1]:\n                        validation_warnings.append(source_name\
+          \ + ':invalid_flat_size_evidence')\n                        continue\n \
+          \                   measured = []\n                    for index in indexes:\n\
+          \                        numbers = re.findall(r'\\d+(?:\\.\\d+)?', str(by_i[index].get('text',\
+          \ '')))\n                        if len(numbers) != 1:\n               \
+          \             break\n                        measured.append(numbers[0])\n\
+          \                    if len(measured) != 2:\n                        validation_warnings.append(source_name\
+          \ + ':invalid_flat_size_values')\n                        continue\n   \
+          \                 submitted = re.fullmatch(\n                        r'\\\
+          s*(\\d+(?:\\.\\d+)?)\\s*[xX×*]\\s*(\\d+(?:\\.\\d+)?)\\s*(?:mm)?\\s*',\n\
+          \                        str(value), flags=re.I)\n                    if\
+          \ not submitted or any(float(submitted.group(i + 1)) != float(measured[i])\
+          \ for i in range(2)):\n                        validation_warnings.append(source_name\
+          \ + ':flat_size_value_mismatch')\n                        continue\n   \
+          \                 value = measured[0] + '×' + measured[1]\n            if\
+          \ expected_mode == 'ocr' and not indexes:\n                validation_warnings.append(source_name\
+          \ + ':missing_evidence:' + field_id)\n                continue\n       \
+          \     supplied[field_id] = {'value':value,'lineIndexes':indexes,'valueSource':expected_mode,\n\
+          \                                  'confidence':entry.get('confidence')}\n\
+          \            if entry.get('unit'): supplied[field_id]['unit'] = entry['unit']\n\
+          \    if definitions.get('dimensions.flatSize', {}).get('extractionMode')\
+          \ == 'ocr' and 'dimensions.flatSize' not in supplied:\n        # A unique\
+          \ explicit LxW OCR label can fill the sheet size without another LLM decision.\n\
+          \        sheet_sizes = {}\n        for row_index, row in by_i.items():\n\
+          \            raw = str(row.get('text') or '').strip()\n            if not\
+          \ re.fullmatch(r'L\\s*\\d+(?:\\.\\d+)?\\s*[xX×*]\\s*W\\s*\\d+(?:\\.\\d+)?\\\
+          s*(?:mm)?', raw, re.I):\n                continue\n            dimensions\
+          \ = labeled_dimensions(raw)\n            if 'L' in dimensions and 'W' in\
+          \ dimensions:\n                sheet_sizes.setdefault((dimensions['L'],\
+          \ dimensions['W']), []).append(row_index)\n        if len(sheet_sizes) ==\
+          \ 1:\n            pair, evidence = next(iter(sheet_sizes.items()))\n   \
+          \         supplied['dimensions.flatSize'] = {'value':pair[0] + '×' + pair[1]\
+          \ + 'mm',\n                'lineIndexes':evidence, 'valueSource':'ocr',\n\
+          \                'confidence':by_i[evidence[0]].get('score')}\n        elif\
+          \ len(sheet_sizes) > 1:\n            validation_warnings.append('ocr:ambiguous_sheet_size')\n\
+          \    for field_id, value in filename_fields(file_name).items():\n      \
+          \  if field_id in definitions and definitions[field_id]['extractionMode']\
+          \ == 'file_metadata':\n            supplied[field_id] = {'value':value,'lineIndexes':[],'valueSource':'file_metadata','confidence':1.0}\n\
+          \    material_type = profile_fallback.get('materialType') if isinstance(profile_fallback,dict)\
+          \ else None\n    if material_type and material_type != 'unknown' and 'material_properties.materialType'\
+          \ in definitions:\n        supplied['material_properties.materialType']\
+          \ = {\n            'value':material_type,\n            'lineIndexes':[i\
+          \ for i in profile_fallback.get('evidenceLineIndexes',[]) if i in by_i],\n\
+          \            'valueSource':'derived','confidence':profile_fallback.get('confidence',0)}\n\
+          \    overall_axes = {'dimensions.overallLength':'L', 'dimensions.overallWidth':'W',\
+          \ 'dimensions.overallHeight':'H'}\n    source_ids = []\n    for field_id\
+          \ in overall_axes:\n        for parent_id in definitions.get(field_id, {}).get('derivedFrom',\
+          \ []):\n            if parent_id not in source_ids:\n                source_ids.append(parent_id)\n\
+          \    for parent_id in source_ids:\n        parent = supplied.get(parent_id)\n\
+          \        if not parent:\n            continue\n        dimensions = labeled_dimensions(parent.get('value'))\n\
+          \        if 'L' not in dimensions or 'W' not in dimensions:\n          \
+          \  continue\n        for field_id, axis in overall_axes.items():\n     \
+          \       if parent_id not in definitions.get(field_id, {}).get('derivedFrom',\
+          \ []) or axis not in dimensions:\n                continue\n           \
+          \ supplied[field_id] = {'value':dimensions[axis], 'unit':'mm',\n       \
+          \         'lineIndexes':parent.get('lineIndexes', []), 'valueSource':'derived',\n\
+          \                'confidence':parent.get('confidence')}\n        break\n\
+          \    complete_fields = []\n    for definition in template.get('fields',\
+          \ []):\n        item = dict(definition)\n        for key,value in supplied.get(item['id'],{}).items():\n\
+          \            item[key] = value\n        complete_fields.append(item)\n \
+          \   mapped['fields'] = complete_fields\n    mapped['materialProfile'] =\
+          \ profile_fallback\n    boxes = [r.get('box') for r in rows if isinstance(r.get('box'),list)\
+          \ and len(r.get('box')) == 4]\n    width = max([float(b[2]) for b in boxes]\
+          \ or [1])\n    height = max([float(b[3]) for b in boxes] or [1])\n    scale_value,\
+          \ scale_indexes = find_labeled_scale(rows, width, height)\n    if scale_value:\n\
+          \        for field in mapped.get('fields', []):\n            if field.get('key')\
+          \ == 'scale' and (field.get('value') is None or not str(field.get('value')).strip()):\n\
+          \                field['value'] = scale_value\n                field['lineIndexes']\
+          \ = scale_indexes\n                field['valueSource'] = 'observed'\n \
+          \               break\n    used_indexes = set()\n    specs = []\n    nodes\
+          \ = [{'id':'root','parentId':None,'type':'group','name':'包装图纸','order':1}]\n\
+          \    group_order = {key:i+1 for i,(key,_) in enumerate(GROUPS)}\n    present_groups\
+          \ = []\n    field_order = {}\n    seen_ids = set()\n\n    for position,\
+          \ field in enumerate(mapped.get('fields', [])):\n        if not isinstance(field,\
+          \ dict): continue\n        category = field.get('category') if field.get('category')\
+          \ in group_order else 'other'\n        key = re.sub(r'[^a-zA-Z0-9_]+','_',str(field.get('key')\
+          \ or position)).strip('_') or str(position)\n        node_id = category\
+          \ + '.' + key\n        if node_id in seen_ids: continue\n        seen_ids.add(node_id)\n\
+          \        indexes = [i for i in field.get('lineIndexes',[]) if i in by_i]\n\
+          \        used_indexes.update(indexes)\n        refs = [by_i[i] for i in\
+          \ indexes]\n        confidence = round(min(float(field.get('confidence')\
+          \ or 1), sum(float(r.get('score',0)) for r in refs)/len(refs)),4) if refs\
+          \ else (round(float(field.get('confidence') or 0),4) if field.get('value')\
+          \ not in (None,'') else 0)\n        evidence = [{'page':1,'region':rect(r.get('box'),width,height),'text':str(r.get('text','')),'lineIndex':r.get('i')}\
+          \ for r in refs if rect(r.get('box'),width,height)]\n        spec = {'id':node_id,'category':category,'key':key,'name':str(field.get('name')\
+          \ or key),\n                'value':field.get('value'),'unit':field.get('unit'),'valueSource':field.get('valueSource','observed'),\n\
+          \                'confidence':confidence,'evidence':evidence}\n        specs.append(spec)\n\
+          \        if category not in present_groups: present_groups.append(category)\n\
+          \        field_order[category] = field_order.get(category,0)+1\n       \
+          \ nodes.append({'id':node_id,'parentId':category,'type':'field','name':spec['name'],'order':field_order[category],\n\
+          \                      'valueType':'text','value':{'original':spec['value'],'current':spec['value'],'display':str(spec['value']\
+          \ or ''),'unit':spec['unit']},\n                      'recognition':{'confidence':confidence,'method':'ocr+llm_mapping','valueSource':spec['valueSource']},\n\
+          \                      'evidence':evidence,'edit':{'corrected':False,'correctedAt':None}})\n\
+          \n\n    # 快速尺寸分支只提供语义，坐标和值始终取自 OCR 原始行。\n    dynamic_order = 0\n    used_dimension_indexes\
+          \ = set()\n    for position, item in enumerate(drawing_dimensions):\n  \
+          \      if not isinstance(item, dict):\n            continue\n        valid_indexes\
+          \ = [int(i) for i in item.get('lineIndexes', [])\n                     \
+          \    if (isinstance(i, int) or str(i).isdigit()) and int(i) in candidate_indexes\
+          \ and int(i) in by_i]\n        if not valid_indexes:\n            continue\n\
+          \        line_index = valid_indexes[0]\n        if line_index in used_dimension_indexes:\n\
+          \            continue\n        row = by_i[line_index]\n        if not re.search(r'\\\
+          d', str(row.get('text', ''))):\n            continue\n        region = rect(row.get('box'),\
+          \ width, height)\n        if not region:\n            continue\n       \
+          \ used_dimension_indexes.add(line_index)\n        used_indexes.add(line_index)\n\
+          \        raw_key = 'dim_' + str(line_index)\n        key = re.sub(r'[^a-zA-Z0-9_]+',\
+          \ '_', raw_key).strip('_') or ('dimension_' + str(position + 1))\n     \
+          \   base_id = 'drawing_dimensions.' + key\n        node_id = base_id\n \
+          \       suffix = 2\n        while node_id in seen_ids:\n            node_id\
+          \ = base_id + '_' + str(suffix)\n            suffix += 1\n        seen_ids.add(node_id)\n\
+          \        value = str(row.get('text', '')).strip(' -–—')\n        name =\
+          \ str(item.get('name') or '').strip()\n        if not name or name == value\
+          \ or name in ('未知尺寸', '面板尺寸', '制图区尺寸', '总长'):\n            name = '制图区尺寸（OCR行'\
+          \ + str(line_index) + '，语义待确认）'\n        requested_spec_id = item.get('specId')\n\
+          \        canonical = canonical_specs.get(requested_spec_id)\n        if\
+          \ requested_spec_id and not canonical:\n            validation_warnings.append('drawing_dimension:unknown_spec_id:'\
+          \ + str(requested_spec_id)[:100])\n        if canonical:\n            spec_id\
+          \ = requested_spec_id\n            name = canonical['name']\n          \
+          \  naming_status = 'catalog'\n        else:\n            spec_id = None\n\
+          \            naming_status = 'provisional'\n        face_name = str(item.get('faceName')\
+          \ or '').strip()\n        evidence = [{'page': 1, 'region': region, 'text':\
+          \ str(row.get('text', '')), 'lineIndex': line_index}]\n        try:\n  \
+          \          model_confidence = max(0.0, min(1.0, float(item.get('confidence')\
+          \ or 0)))\n        except (TypeError, ValueError):\n            model_confidence\
+          \ = 0.0\n        ocr_confidence = max(0.0, min(1.0, float(row.get('score',\
+          \ 0))))\n        confidence = round(min(model_confidence or ocr_confidence,\
+          \ ocr_confidence), 4)\n        role = str(item.get('dimensionRole') or 'unknown')\n\
+          \        if role not in ('overall', 'panel', 'score_to_score', 'placement',\
+          \ 'unknown'):\n            role = 'unknown'\n        spec = {\n        \
+          \    'id': node_id, 'specId': spec_id, 'namingStatus': naming_status, 'category':\
+          \ 'drawing_dimensions', 'key': key, 'name': name,\n            'value':\
+          \ value, 'unit': item.get('unit') if item.get('unit') in ('mm', 'cm') else\
+          \ None, 'valueSource': 'observed',\n            'confidence': confidence,\
+          \ 'evidence': evidence, 'auditEnabled': False,\n            'demoScope':\
+          \ 'drawing_dimension', 'dimensionRole': role,\n            'faceName': face_name\
+          \ or None, 'reason': str(item.get('reason') or '')\n        }\n        specs.append(spec)\n\
+          \        if 'drawing_dimensions' not in present_groups:\n            present_groups.append('drawing_dimensions')\n\
+          \        dynamic_order += 1\n        nodes.append({\n            'id': node_id,\
+          \ 'specId': spec_id, 'namingStatus': naming_status, 'parentId': 'drawing_dimensions',\
+          \ 'type': 'field', 'name': name, 'order': dynamic_order,\n            'valueType':\
+          \ 'text',\n            'value': {'original': value, 'current': value, 'display':\
+          \ value, 'unit': spec['unit']},\n            'recognition': {'confidence':\
+          \ confidence, 'method': 'vision_semantic+ocr_evidence', 'valueSource': 'observed'},\n\
+          \            'evidence': evidence, 'auditEnabled': False, 'demoScope': 'drawing_dimension',\n\
+          \            'edit': {'corrected': False, 'correctedAt': None}\n       \
+          \ })\n\n    for raw_text in unmatched_dimensions:\n        text = str(raw_text).strip()\n\
+          \        if text:\n            validation_warnings.append('drawing_dimension:visible_but_missing_ocr:'\
+          \ + text[:40])\n\n    other_elements = []\n    for row in rows:\n      \
+          \  if row.get('i') in used_indexes: continue\n        region = rect(row.get('box'),width,height)\n\
+          \        element = {'id':'ocr.'+str(row.get('i')),'kind':'text','observed':{'text':str(row.get('text',''))},\n\
+          \                   'inferred':None,'confidence':round(float(row.get('score',0)),4),\n\
+          \                   'evidence':[{'page':1,'region':region,'text':str(row.get('text',''))}]\
+          \ if region else []}\n        other_elements.append(element)\n\n    graphic_elements\
+          \ = []\n    rules = [('FSC','certification_mark'),('QR','qr_code'),('BARCODE','barcode'),('模切','die_cut_legend'),('压痕','crease_legend'),('回收','recycling_mark')]\n\
+          \    for row in rows:\n        upper = str(row.get('text','')).upper()\n\
+          \        for token, kind in rules:\n            if token.upper() in upper:\n\
+          \                region = rect(row.get('box'),width,height)\n          \
+          \      graphic_elements.append({'id':'graphic.'+kind+'.'+str(row.get('i')),'kind':kind,\n\
+          \                    'observed':{'nearbyText':str(row.get('text',''))},'inferred':{'purpose':kind},\n\
+          \                    'confidence':round(float(row.get('score',0))*0.85,4),\n\
+          \                    'evidence':[{'page':1,'region':region,'text':str(row.get('text',''))}]\
+          \ if region else []})\n                break\n\n    group_nodes=[]\n   \
+          \ for key,name in GROUPS:\n        if key in present_groups:\n         \
+          \   group_nodes.append({'id':key,'parentId':'root','type':'group','name':name,'order':group_order[key]})\n\
+          \    nodes = [nodes[0]] + group_nodes + nodes[1:]\n    profile = dict(profile_fallback)\
+          \ if isinstance(profile_fallback, dict) else {}\n    output = {\n      'schemaVersion':'2.1','taskId':'agent-generated','stage':'extraction',\n\
+          \      'document':{'fileName':str(file_name or 'uploaded-document'),'fileType':'pdf_or_image','width':width,'height':height,'pageCount':1},\n\
+          \      'schemaId':template.get('schemaId'),'templateVersion':template.get('schemaVersion'),\n\
+          \      'materialProfile':profile,\n      'summary':{'specCount':len(specs),'otherElementCount':len(other_elements),'graphicElementCount':len(graphic_elements),\n\
+          \                 'lowConfidenceCount':sum(1 for x in specs+other_elements\
+          \ if x.get('value') not in (None,'') and float(x.get('confidence',0)) <\
+          \ .6)},\n      'specs':specs,'elements':other_elements+graphic_elements,\n\
+          \      'relations':[r for r in mapped.get('relations',[]) if isinstance(r,dict)],\n\
+          \      'validationWarnings':validation_warnings,\n      'nodes':nodes,'correctionHistory':[]\n\
+          \    }\n    return {'result':json.dumps(output,ensure_ascii=False,separators=(',',':'))}\n"
+        code_language: python3
+        desc: 保留全部 OCR 元素并组装 Spec、推断、关系和证据
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 汇总信息与结构 SPEC
+        type: code
+        variables:
+        - value_selector:
+          - '1788932504587'
+          - text
+          value_type: string
+          variable: llm_text
+        - value_selector:
+          - '1788935200000'
+          - ocr_lines
+          value_type: string
+          variable: ocr_lines
+        - value_selector:
+          - '1788935350000'
+          - merged_template
+          value_type: string
+          variable: merged_template
+        - value_selector:
+          - '1788935350000'
+          - material_profile
+          value_type: string
+          variable: material_profile
+        - value_selector:
+          - '1788935490000'
+          - output
+          value_type: string
+          variable: dimension_text
+        - value_selector:
+          - '1788932193539'
+          - source_file_name
+          value_type: string
+          variable: file_name
+        - value_selector:
+          - '1788935250000'
+          - dimension_candidates
+          value_type: string
+          variable: dimension_candidates
+        - value_selector:
+          - '1788935350000'
+          - structure_spec_catalog
+          value_type: string
+          variable: structure_spec_catalog
+      height: 96
+      id: '1788935400000'
+      position:
+        x: 3500
+        y: 245.83333333333337
+      positionAbsolute:
+        x: 3500
+        y: 245.83333333333337
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: material-is-corrugated
+            value: corrugated
+            varType: string
+            variable_selector:
+            - '1788935350000'
+            - material_type
+          id: 'true'
+          logical_operator: and
+        desc: 当前仅瓦楞执行制图区结构尺寸识别；其他材料保留通用视觉字段识别。
+        selected: false
+        title: 按类型分流结构识别
+        type: if-else
+      height: 192
+      id: '1788935450000'
+      position:
+        x: 2414
+        y: 245.70000000000005
+      positionAbsolute:
+        x: 2414
+        y: 245.70000000000005
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 与 V1 主提取链并行，只为制图区数字生成语义名称
+        model:
+          completion_params:
+            enable_thinking: false
+            max_tokens: 3000
+            response_format: json_object
+            temperature: 0.05
+          mode: chat
+          name: qwen3.8-flash
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: 7769c4eb-0542-401f-984d-563c57d5bbc1
+          role: system
+          text: '【职责】
+
+            只分析非瓦楞图纸的制图区尺寸和视觉字段。原图用于辨别尺寸线与部件关系；OCR 候选用于绑定真实行号。不要把模型猜测当成标准 Spec。
+
+
+            【制图区尺寸】
+
+            1. 逐一查看真实尺寸线旁的可读数字，包括总尺寸、分段尺寸、孔槽及标识定位尺寸。相同数值出现在不同尺寸线时分别输出。
+
+            2. 排除图框坐标、表格参数、日期、图号、材料代码、条码和没有尺寸线的孤立数字。
+
+            3. 每项只绑定一个真实的候选 OCR lineIndex；同一行号不可重复。OCR 未覆盖的可见尺寸写入 unmatchedDimensionTexts，不得借用同值的其他行号。
+
+            4. 每项只输出 key、specId、name、faceName、dimensionRole、unit、lineIndexes、confidence。key
+            为 dim_ 加行号；specId 固定为 null；name 用图纸能证明的“位置＋部件＋测量方向/关系”命名，证据不足时用可区分位置的暂定名称，不得硬套瓦楞结构词典。
+
+            5. dimensionRole 只能为 overall、panel、score_to_score、placement、unknown；unit
+            只能为 mm 或 null；faceName 不确定时为 null；confidence 为 0 到 1 的数字。不要输出 value 或
+            bbox，代码将从 OCR 原始行读取。
+
+
+            【视觉字段】
+
+            visualFields 只填写输入清单中有直接证据的原样 id；每项只含 id、value、lineIndexes、confidence。allowedValues
+            必须原样选取。FSC 与回收标识不得混淆；纯图形证据的 lineIndexes 可以为空。
+
+
+            【输出】
+
+            只输出 JSON 对象，顶层仅 drawingDimensions、visualFields、unmatchedDimensionTexts。无结果时使用空数组。禁止解释、Markdown
+            和额外键。'
+        - id: 32bd5f2c-0546-4d2e-b19b-4b96e967417d
+          role: user
+          text: '【视觉字段清单】
+
+            {{#1788935350000.visual_template#}}
+
+
+            【尺寸 OCR 候选】
+
+            {{#1788935250000.dimension_candidates#}}
+
+
+            【OCR 行】
+
+            {{#1788935200000.llm_ocr_lines#}}'
+        selected: false
+        title: 非瓦楞结构 SPEC 填写
+        type: llm
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1788932193539'
+            - drawing
+          enabled: true
+      height: 132
+      id: '1788935470000'
+      position:
+        x: 2776
+        y: 424.1
+      positionAbsolute:
+        x: 2776
+        y: 424.1
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        advanced_settings:
+          group_enabled: false
+          groups: []
+        output_type: string
+        selected: false
+        title: 合并分支
+        type: variable-aggregator
+        variables:
+        - - '1788935270000'
+          - text
+        - - '1788935470000'
+          - text
+      height: 134
+      id: '1788935490000'
+      position:
+        x: 3138
+        y: 336.4333333333333
+      positionAbsolute:
+        x: 3138
+        y: 336.4333333333333
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        code: "import json\nimport re\n\nNAMES = {'corrugated':'瓦楞','molded_pulp':'纸浆模','tracing_paper':'硫酸纸','bamboo_fiber':'竹纤维','unknown':'未知'}\n\
+          LABEL = re.compile(r'^(?:MATERIAL|材质|材料)\\s*[:：]?\\s*$', re.I)\nINLINE =\
+          \ re.compile(r'^(?:MATERIAL|材质|材料)\\s*[:：]\\s*(.+)$', re.I)\nNEXT_LABEL\
+          \ = re.compile(r'^(?:PART\\s*NO\\.?|BURSTING|COMPRESSION|THICKNESS|DENSITY|SIZE|GROSS\\\
+          s*WEIGHT|MOISTURE|COLOR|PRINTING|REMARK|料号|尺寸|厚度|密度|毛重|颜色)\\b', re.I)\n\
+          COMPOSITE = re.compile(r'MATT?\\s*FILM|LASER\\s*FILM|\\bCCNB\\b|\\bC1S\\\
+          b|(?:\\d+\\s*G\\s*)?GB\\b', re.I)\nPATTERNS = {\n    'molded_pulp': re.compile(r'纸浆模|纸浆模塑|模塑纸浆|\\\
+          b(?:molded|moulded|paper|straw|recycled?\\s+corrugated)\\s+pulp\\b|\\bpulp\\\
+          s+mold(?:ed)?\\b', re.I),\n    'tracing_paper': re.compile(r'硫酸纸|\\btracing\\\
+          s+paper\\b', re.I),\n    'bamboo_fiber': re.compile(r'竹纤维|\\bbamboo\\s+fib(?:er|re)\\\
+          b', re.I),\n    'corrugated': re.compile(r'瓦楞纸(?:板)?|\\bcorrugated\\s+(?:fiber\\\
+          s*)?board\\b|\\b[ABCEFG]\\s*[- ]?flute\\b', re.I),\n}\n\ndef load_rows(value):\n\
+          \    try:\n        parsed = json.loads(value) if isinstance(value, str)\
+          \ else value\n        if isinstance(parsed, dict): parsed = parsed.get('rows',\
+          \ parsed.get('items', []))\n        return [r for r in parsed if isinstance(r,\
+          \ dict)] if isinstance(parsed, list) else []\n    except Exception:\n  \
+          \      return []\n\ndef box(row):\n    b = row.get('box')\n    try:\n  \
+          \      if not isinstance(b, (list, tuple)) or len(b) != 4: return None\n\
+          \        x1,y1,x2,y2 = [float(x) for x in b]\n        return (x1,y1,x2,y2)\
+          \ if x2 > x1 and y2 > y1 else None\n    except (TypeError, ValueError):\n\
+          \        return None\n\ndef material_candidates(rows):\n    found = []\n\
+          \    for label in rows:\n        raw = str(label.get('text', '')).strip()\n\
+          \        inline = INLINE.match(raw)\n        if not LABEL.fullmatch(raw)\
+          \ and not inline: continue\n        pieces = []\n        if inline:\n  \
+          \          pieces.append(label)\n        lb = box(label)\n        if lb:\n\
+          \            h = lb[3] - lb[1]\n            for row in rows:\n         \
+          \       if row is label: continue\n                rb = box(row)\n     \
+          \           if not rb or rb[0] < lb[2] - h * 0.4: continue\n           \
+          \     dy = (rb[1]+rb[3]-lb[1]-lb[3])/2\n                if -max(h, rb[3]-rb[1])\
+          \ <= dy <= max(h*2.5, rb[3]-rb[1]*2.5):\n                    if not NEXT_LABEL.match(str(row.get('text','')).strip()):\
+          \ pieces.append(row)\n        # OCR may return the entire material cell\
+          \ as one row. Keep only text\n        # spatially associated with the MATERIAL\
+          \ label; never search the page.\n        pieces = sorted({str(r.get('i')):r\
+          \ for r in pieces}.values(), key=lambda r: ((box(r) or (0,0,0,0))[1], (box(r)\
+          \ or (0,0,0,0))[0]))\n        values = [r for r in pieces if (r is not label\
+          \ or inline) and\n                  (any(pattern.search(str(r.get('text','')))\
+          \ for pattern in PATTERNS.values()) or COMPOSITE.search(str(r.get('text',''))))]\n\
+          \        if values:\n            found.append({'labelIndex':label.get('i'),\
+          \ 'text':' '.join(str(r.get('text','')).strip() for r in values),\n    \
+          \                      'lineIndexes':[r.get('i') for r in values if r.get('i')\
+          \ is not None]})\n    if not found:\n        # Some CAD PDFs outline the\
+          \ MATERIAL label as paths while leaving the\n        # material value as\
+          \ text. Use only strong material expressions, never\n        # weak words\
+          \ such as KRAFT, PAPER or a product name.\n        strong = [r for r in\
+          \ rows if any(pattern.search(str(r.get('text',''))) for pattern in PATTERNS.values())\
+          \ or\n                  COMPOSITE.search(str(r.get('text','')))]\n     \
+          \   if strong:\n            found.append({'labelIndex':None,'text':' '.join(str(r.get('text','')).strip()\
+          \ for r in strong),\n                          'lineIndexes':[r.get('i')\
+          \ for r in strong if r.get('i') is not None]})\n    return found\n\ndef\
+          \ classify(text):\n    kinds = [name for name, pattern in PATTERNS.items()\
+          \ if pattern.search(text)]\n    if COMPOSITE.search(text): return None,\
+          \ '复合材质需要确认主体类别'\n    # \"recycled corrugated pulp\" describes pulp feedstock,\
+          \ not board.\n    if 'molded_pulp' in kinds and 'corrugated' in kinds and\
+          \ not re.search(r'\\bcorrugated\\s+(?:fiber\\s*)?board\\b|\\b[ABCEFG]\\\
+          s*[- ]?flute\\b', text, re.I):\n        kinds.remove('corrugated')\n   \
+          \ if len(kinds) == 1: return kinds[0], ''\n    return None, '材料表述冲突' if\
+          \ kinds else '材料写法未被明确规则覆盖'\n\nSTRUCTURE_ENUM = [{'code': 'flat_box', 'name':\
+          \ '平口箱', 'primaryEvidence': '连续箱面、接合边、顶底摇盖构成可展平的箱体', 'textCorroboration':\
+          \ 'GLUE、箱体名称仅作佐证，不单独决定类别', 'boundary': '不把预粘合盒或套盒强归入平口箱；具体 FEFCO 型号不在此处判定'},\
+          \ {'code': 'folding_box', 'name': '折叠盒', 'primaryEvidence': '一张展开料形成盒底、侧墙／围墙和盒盖，折叠成盒',\
+          \ 'textCorroboration': 'ACC BOX、CARTON、FOLD 仅作佐证', 'boundary': '不默认属于 0427；锁合件只在图纸确有标注时识别'},\
+          \ {'code': 'corrugated_pad', 'name': '非箱型瓦楞纸垫', 'primaryEvidence': '瓦楞板形成带折叠段或开孔的垫件，不构成完整闭合盒体',\
+          \ 'textCorroboration': 'PAPER PAD 名称仅作佐证', 'boundary': '不使用盒底、围墙和盒盖的成品盒名称'}]\n\
+          STRUCTURE_CLUE = re.compile(r'\\b(?:ACC\\s*BOX|CARTON|PAPER\\s*PAD|FOLD(?:ING)?|GLUE|LID|FLAP|LOCK|SLOT)\\\
+          b|折叠盒|平口箱|纸垫|盒盖|摇盖|插舌|粘合|胶合|压痕', re.I)\n\ndef main(ocr_lines: str) -> dict:\n\
+          \    rows = load_rows(ocr_lines)\n    candidates = material_candidates(rows)\n\
+          \    for item in candidates:\n        item['recognizedAlias'], item['aliasWarning']\
+          \ = classify(item['text'])\n    clues = [{'lineIndex':r.get('i'),'text':str(r.get('text','')).strip()[:160]}\n\
+          \             for r in rows if STRUCTURE_CLUE.search(str(r.get('text','')))]\n\
+          \    return {\n        'material_context':json.dumps({'candidates':candidates,\n\
+          \            'rule':'recognizedAlias 仅是文字匹配提示，不是分类结论；必须核对整张图纸。'},ensure_ascii=False,separators=(',',':')),\n\
+          \        'structure_context':json.dumps({'categories':STRUCTURE_ENUM,\n\
+          \            'ocrClues':clues[:16],\n            'rule':'仅是文字佐证；二级分类必须由原图的板片、折线、模切线及连接关系决定。'},ensure_ascii=False,separators=(',',':'))\n\
+          \    }\n"
+        code_language: python3
+        desc: 保留材质原文与行号；枚举匹配仅作为提示，不代替模型核验
+        outputs:
+          material_context:
+            children: null
+            type: string
+          structure_context:
+            children: null
+            type: string
+        selected: false
+        title: 材料类型识别证据准备
+        type: code
+        variables:
+        - value_selector:
+          - '1788935200000'
+          - ocr_lines
+          value_type: string
+          variable: ocr_lines
+      height: 96
+      id: '1791531000001'
+      position:
+        x: 1026
+        y: 107.50000000000001
+      positionAbsolute:
+        x: 1026
+        y: 107.50000000000001
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    viewport:
+      x: -1755.1050663342544
+      y: 240.3379040156708
+      zoom: 0.5475914878461404
+  rag_pipeline_variables: []
